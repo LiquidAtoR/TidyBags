@@ -1,5 +1,5 @@
 ﻿/*
- * Tidy Bags v3.6.1.2 by LiquidAtoR
+ * Tidy Bags v3.6.1.3 by LiquidAtoR
  *
  * This is a trivial little addon that will tidy up on-use items like Clams and
  * Borean Leather Scraps. It uses a stopwatch to stop it spamming Pulse() and
@@ -7,6 +7,10 @@
  *
  * Credits to Ryns, MaiN, erenion, TIA, ShamWOW (Bobby53), Gilderoy and Samrick for their contributions
  * I would also like to thank everyone that has reported items that are added here in the list.
+ *
+ * 2012/09/29  v3.6.1.3
+ *				Added few MoP items like Plump Intestines, Mote of Harmony,
+ *				Cache of Treasures, Plundered Treasure, Good Fortune and Skyshards.
  *
  * 2012/09/24  v3.6.1.2
  *				Even more silly copy/paste faulty thingy.
@@ -161,7 +165,7 @@ namespace PluginTidyBags3
     {
         public override string Name { get { return "Tidy Bags 3.6 Reloaded"; } }
         public override string Author { get { return "LiquidAtoR"; } }
-        public override Version Version { get { return new Version(3,6,1,2); } }
+        public override Version Version { get { return new Version(3,6,1,3); } }
 
         private HashSet<uint> _itemUseOnOne = new HashSet<uint>() {
             3352,  // Ooze-covered Bag
@@ -215,6 +219,7 @@ namespace PluginTidyBags3
             67539,  // Tiny Treasure Chest
             67597, // Sealed Crate (level 85 version)
             69903, // Satchel of Exotic Mysteries (LFD - Extra Reward)
+			72201, // Plump Intestines
             73478, // Fire Prism (Daily Cooldown for Jewelcrafting - Cataclysm Edition)
             78890, // Crystalline Geode (Dragon Soul Raid - Normal 10/25 every bossloot)
             78891, // Elementium-Coated Geode (Dragon Soul Raid - Normal 10/25 Deathwing Kill)
@@ -232,7 +237,10 @@ namespace PluginTidyBags3
             78908, // Sack o' Tokens (20 Darkmoon Faire Game Coins)
             78909, // Sack o' Tokens (20 Darkmoon Faire Game Coins)
             78930, // Sealed Crate (around the Darkmoon Faire Island)
-            89810  // Bounty of a Sundered Land (LFR Contains 25G if you don't win gear)
+			87391, // Plundered Treasure (Luck of the Lotus Buff)
+			89613, // Cache of Treasures
+            89810, // Bounty of a Sundered Land (LFR Contains 25G if you don't win gear)
+			90716  // Good Fortune (when using a Lucky Charm on a boss for loot)
         };
 
         private HashSet<uint> _itemUseOnFive = new HashSet<uint>() {
@@ -252,13 +260,19 @@ namespace PluginTidyBags3
             37702, // Crystallized Fire
             37703, // Crystallized Shadow
             37704, // Crystallized Life
-            37705  // Crystallized Water
+            37705, // Crystallized Water
+			86547, // Skyshard
+			89112  // Mote of Harmony
         };
 
         private HashSet<uint> _itemRequiresSleep = new HashSet<uint>() {
             61387, // Hidden Stash
             67495, // Strange Bloated Stomach
-            67539  // Tiny Treasure Chest
+            67539, // Tiny Treasure Chest
+			72201, // Plump Intestines
+			87391, // Plundered Treasure (Luck of the Lotus Buff)
+			89613, // Cache of Treasures
+			90716  // Good Fortune
         };
 
         private static Stopwatch sw = new Stopwatch();
