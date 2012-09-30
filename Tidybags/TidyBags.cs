@@ -238,6 +238,7 @@ namespace PluginTidyBags3
             78909, // Sack o' Tokens (20 Darkmoon Faire Game Coins)
             78930, // Sealed Crate (around the Darkmoon Faire Island)
 			87391, // Plundered Treasure (Luck of the Lotus Buff)
+			88496, // Sealed Crate (MoP version)
 			89613, // Cache of Treasures
             89810, // Bounty of a Sundered Land (LFR Contains 25G if you don't win gear)
 			90716  // Good Fortune (when using a Lucky Charm on a boss for loot)
