@@ -1,5 +1,5 @@
 ﻿/*
- * Tidy Bags v3.6.1.3 by LiquidAtoR
+ * Tidy Bags v3.6.1.4 by LiquidAtoR
  *
  * This is a trivial little addon that will tidy up on-use items like Clams and
  * Borean Leather Scraps. It uses a stopwatch to stop it spamming Pulse() and
@@ -7,6 +7,9 @@
  *
  * Credits to Ryns, MaiN, erenion, TIA, ShamWOW (Bobby53), Gilderoy and Samrick for their contributions
  * I would also like to thank everyone that has reported items that are added here in the list.
+ *
+ * 2012/10/02  v3.6.1.4
+ *				Added Sealed Crate (MoP version)
  *
  * 2012/09/29  v3.6.1.3
  *				Added few MoP items like Plump Intestines, Mote of Harmony,
@@ -165,7 +168,7 @@ namespace PluginTidyBags3
     {
         public override string Name { get { return "Tidy Bags 3.6 Reloaded"; } }
         public override string Author { get { return "LiquidAtoR"; } }
-        public override Version Version { get { return new Version(3,6,1,3); } }
+        public override Version Version { get { return new Version(3,6,1,4); } }
 
         private HashSet<uint> _itemUseOnOne = new HashSet<uint>() {
             3352,  // Ooze-covered Bag
@@ -215,11 +218,11 @@ namespace PluginTidyBags3
             64657, // Canopic Jar (Archaeology Tol'vir relic)
             67248, // Satchel of Helpful Goods (39)
             67250, // Satchel of Helpful Goods (85)
-            67495, // Strange Bloated Stomach
-            67539,  // Tiny Treasure Chest
+            67495, // Strange Bloated Stomach (Cataclysm Skinning)
+            67539, // Tiny Treasure Chest
             67597, // Sealed Crate (level 85 version)
             69903, // Satchel of Exotic Mysteries (LFD - Extra Reward)
-			72201, // Plump Intestines
+			72201, // Plump Intestines (MoP Skinning)
             73478, // Fire Prism (Daily Cooldown for Jewelcrafting - Cataclysm Edition)
             78890, // Crystalline Geode (Dragon Soul Raid - Normal 10/25 every bossloot)
             78891, // Elementium-Coated Geode (Dragon Soul Raid - Normal 10/25 Deathwing Kill)
