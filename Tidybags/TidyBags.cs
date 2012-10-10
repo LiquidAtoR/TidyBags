@@ -1,5 +1,5 @@
 ﻿/*
- * Tidy Bags v3.6.1.4 by LiquidAtoR
+ * Tidy Bags v3.6.1.5 by LiquidAtoR
  *
  * This is a trivial little addon that will tidy up on-use items like Clams and
  * Borean Leather Scraps. It uses a stopwatch to stop it spamming Pulse() and
@@ -7,6 +7,9 @@
  *
  * Credits to Ryns, MaiN, erenion, TIA, ShamWOW (Bobby53), Gilderoy and Samrick for their contributions
  * I would also like to thank everyone that has reported items that are added here in the list.
+ *
+ * 2012/10/05  v3.6.1.5
+ *				Added Treasures of the Vale, Sparkling Shards
  *
  * 2012/10/02  v3.6.1.4
  *				Added Sealed Crate (MoP version)
@@ -142,6 +145,7 @@ namespace PluginTidyBags3
     using Styx;
     using Styx.Common;
     using Styx.Common.Helpers;
+	using Styx.CommonBot;
     using Styx.CommonBot.Frames;
     using Styx.CommonBot.Inventory;
     using Styx.CommonBot.Profiles;
@@ -149,14 +153,19 @@ namespace PluginTidyBags3
     using Styx.Pathing;
     using Styx.Plugins;
     using Styx.WoWInternals;
+	using Styx.WoWInternals.Misc;
+	using Styx.WoWInternals.World;
     using Styx.WoWInternals.WoWObjects;
 
     using System;
     using System.Collections.Generic;
+	using System.ComponentModel;
+	using System.Data;
     using System.Diagnostics;
     using System.Drawing;
     using System.IO;
     using System.Linq;
+	using System.Reflection;
     using System.Runtime.InteropServices;
     using System.Text;
     using System.Threading;
@@ -168,7 +177,7 @@ namespace PluginTidyBags3
     {
         public override string Name { get { return "Tidy Bags 3.6 Reloaded"; } }
         public override string Author { get { return "LiquidAtoR"; } }
-        public override Version Version { get { return new Version(3,6,1,4); } }
+        public override Version Version { get { return new Version(3,6,1,5); } }
 
         private HashSet<uint> _itemUseOnOne = new HashSet<uint>() {
             3352,  // Ooze-covered Bag
@@ -244,6 +253,7 @@ namespace PluginTidyBags3
 			88496, // Sealed Crate (MoP version)
 			89613, // Cache of Treasures
             89810, // Bounty of a Sundered Land (LFR Contains 25G if you don't win gear)
+			90625, // Treasures of the Vale (Daily Quest Reward)
 			90716  // Good Fortune (when using a Lucky Charm on a boss for loot)
         };
 
@@ -266,7 +276,8 @@ namespace PluginTidyBags3
             37704, // Crystallized Life
             37705, // Crystallized Water
 			86547, // Skyshard
-			89112  // Mote of Harmony
+			89112, // Mote of Harmony
+			90407  // Sparkling Shard (from Prospecting ores)
         };
 
         private HashSet<uint> _itemRequiresSleep = new HashSet<uint>() {
@@ -276,6 +287,7 @@ namespace PluginTidyBags3
 			72201, // Plump Intestines
 			87391, // Plundered Treasure (Luck of the Lotus Buff)
 			89613, // Cache of Treasures
+			90625, // Treasures of the Vale (Daily Quest Reward)
 			90716  // Good Fortune
         };
 
