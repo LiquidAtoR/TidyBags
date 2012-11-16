@@ -1,5 +1,5 @@
 ﻿/*
- * Tidy Bags v3.6.1.5 by LiquidAtoR
+ * Tidy Bags v3.6.1.6 by LiquidAtoR
  *
  * This is a trivial little addon that will tidy up on-use items like Clams and
  * Borean Leather Scraps. It uses a stopwatch to stop it spamming Pulse() and
@@ -8,11 +8,15 @@
  * Credits to Ryns, MaiN, erenion, TIA, ShamWOW (Bobby53), Gilderoy and Samrick for their contributions
  * I would also like to thank everyone that has reported items that are added here in the list.
  *
+ * 2012/11/16  v3.6.1.6
+ *				Added MoP Archaeology items to be crated.
+ *				Some other stuff I forgot to write down ^^
+ *
  * 2012/10/05  v3.6.1.5
- *				Added Treasures of the Vale, Sparkling Shards
+ *				Added Treasures of the Vale and Sparkling Shards.
  *
  * 2012/10/02  v3.6.1.4
- *				Added Sealed Crate (MoP version)
+ *				Added Sealed Crate (MoP version).
  *
  * 2012/09/29  v3.6.1.3
  *				Added few MoP items like Plump Intestines, Mote of Harmony,
@@ -177,7 +181,7 @@ namespace PluginTidyBags3
     {
         public override string Name { get { return "Tidy Bags 3.6 Reloaded"; } }
         public override string Author { get { return "LiquidAtoR"; } }
-        public override Version Version { get { return new Version(3,6,1,5); } }
+        public override Version Version { get { return new Version(3,6,1,6); } }
 
         private HashSet<uint> _itemUseOnOne = new HashSet<uint>() {
             3352,  // Ooze-covered Bag
@@ -249,6 +253,25 @@ namespace PluginTidyBags3
             78908, // Sack o' Tokens (20 Darkmoon Faire Game Coins)
             78909, // Sack o' Tokens (20 Darkmoon Faire Game Coins)
             78930, // Sealed Crate (around the Darkmoon Faire Island)
+			79897, // Pandaren Game Board (Archaeology)
+			79898, // Twin Stein Set (Archaeology)
+			79899, // Walking Cane (Archaeology)
+			79900, // Empty Keg (Archaeology)
+			79901, // Carved Bronze Mirror (Archaeology)
+			79902, // Gold-Inlaid Figurine (Archaeology)
+			79903, // Apothecary Tins (Archaeology)
+			79904, // Pearl of Yu'lon (Archaeology)
+			79905, // Standard of Niuzao (Archaeology)
+			79908, // Manacles of Rebellion (Archaeology)
+			79909, // Cracked Mogu Runestone (Archaeology)
+			79910, // Terracotta Arm (Archaeology)
+			79911, // Petrified Bone Whip (Archaeology)
+			79912, // Thunder King Insignia (Archaeology)
+			79913, // Edicts of the Thunder King (Archaeology)
+			79914, // Iron Amulet (Archaeology)
+			79915, // Warlord's Branding Iron (Archaeology)
+			79916, // Mogu Coin (Archaeology)
+			79917, // Worn Monument Ledger (Archaeology)
 			87391, // Plundered Treasure (Luck of the Lotus Buff)
 			88496, // Sealed Crate (MoP version)
 			89613, // Cache of Treasures
@@ -310,7 +333,7 @@ namespace PluginTidyBags3
 
             if (sw.Elapsed.TotalSeconds > 1) { // throttle to 1s
                 foreach (WoWItem item in ObjectManager.GetObjectsOfType<WoWItem>()) { // iterate over every item
-                    if (item != null && item.BagSlot != -1) { // check if item exists and is in bag
+                    if (item != null && item.BagSlot != -1 && StyxWoW.Me.FreeNormalBagSlots >= 1) { // check if item exists and is in bag and we have space
                         if (_itemUseOnFive.Contains(item.Entry)) { // stacks of 5
                             if (item.StackCount >= 5) {
                                 this.useItem(item);
