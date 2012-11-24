@@ -1,5 +1,5 @@
 ﻿/*
- * Tidy Bags v3.6.1.6 by LiquidAtoR
+ * Tidy Bags v3.6.1.8 by LiquidAtoR
  *
  * This is a trivial little addon that will tidy up on-use items like Clams and
  * Borean Leather Scraps. It uses a stopwatch to stop it spamming Pulse() and
@@ -7,6 +7,15 @@
  *
  * Credits to Ryns, MaiN, erenion, TIA, ShamWOW (Bobby53), Gilderoy and Samrick for their contributions
  * I would also like to thank everyone that has reported items that are added here in the list.
+ *
+ * 2012/11/23  v3.6.1.8
+ *				Added Marauder's Gleaming Sack of Gold and Pandaren Tea Set (Archaeology).
+ *				Running a test with attachment to Loot Events for plugin to run.
+ *				Added destroying of grey items (credits to Pasterke).
+ *
+ * 2012/11/18  v3.6.1.7
+ *				Added a different check to see if there's skinnables around.
+ *				TidyBags will (hopefully) not run while skinning.
  *
  * 2012/11/16  v3.6.1.6
  *				Added MoP Archaeology items to be crated.
@@ -181,7 +190,27 @@ namespace PluginTidyBags3
     {
         public override string Name { get { return "Tidy Bags 3.6 Reloaded"; } }
         public override string Author { get { return "LiquidAtoR"; } }
-        public override Version Version { get { return new Version(3,6,1,6); } }
+        public override Version Version { get { return new Version(3,6,1,8); } }
+		
+		public bool InventoryCheck = false;
+		
+		private bool _init;
+        public override void Initialize()
+        {
+            if (_init) return;
+            base.Initialize();
+			Lua.Events.AttachEvent("LOOT_CLOSED", LootFinished);
+            Logging.Write(LogLevel.Normal, Colors.DarkRed, "TidyBags 3.6 ready for use...");
+            _init = true;
+        }
+		
+        private void LootFinished(object sender, LuaEventArgs args)
+        {
+            if (InventoryCheck == false)
+            {
+                InventoryCheck = true;
+            }
+        }
 
         private HashSet<uint> _itemUseOnOne = new HashSet<uint>() {
             3352,  // Ooze-covered Bag
@@ -253,6 +282,7 @@ namespace PluginTidyBags3
             78908, // Sack o' Tokens (20 Darkmoon Faire Game Coins)
             78909, // Sack o' Tokens (20 Darkmoon Faire Game Coins)
             78930, // Sealed Crate (around the Darkmoon Faire Island)
+			79896, // Pandaren Tea Set (Archaeology)
 			79897, // Pandaren Game Board (Archaeology)
 			79898, // Twin Stein Set (Archaeology)
 			79899, // Walking Cane (Archaeology)
@@ -277,7 +307,8 @@ namespace PluginTidyBags3
 			89613, // Cache of Treasures
             89810, // Bounty of a Sundered Land (LFR Contains 25G if you don't win gear)
 			90625, // Treasures of the Vale (Daily Quest Reward)
-			90716  // Good Fortune (when using a Lucky Charm on a boss for loot)
+			90716, // Good Fortune (when using a Lucky Charm on a boss for loot)
+			90840  // Marauder's Gleaming Sack of Gold (World Boss gold drop)
         };
 
         private HashSet<uint> _itemUseOnFive = new HashSet<uint>() {
@@ -309,29 +340,41 @@ namespace PluginTidyBags3
             67539, // Tiny Treasure Chest
 			72201, // Plump Intestines
 			87391, // Plundered Treasure (Luck of the Lotus Buff)
+			88496, // Sealed Crate (MoP version)
 			89613, // Cache of Treasures
 			90625, // Treasures of the Vale (Daily Quest Reward)
-			90716  // Good Fortune
+			90716, // Good Fortune
+			90840  // Marauder's Gleaming Sack of Gold (World Boss gold drop)
         };
-
-        private static Stopwatch sw = new Stopwatch();
+		
+		private HashSet<uint> _destroyItems = new HashSet<uint>() {
+			45196, //Tattered Cloth
+			45189, //Torn Sail
+			45188, //Whitered Kelp
+			45195, //Empty Rum Botlle
+			45191, //Empty Clam
+			45194, //Tangled Fishing Line
+			45201, //Rock
+			45190, //Driftwood
+			45200, //Sickly Fish
+			45198, //Weeds
+			44941, //Fresh-Squeezed Limeade
+			45197, //Tree Branch
+			45199 //Old Boot
+		};
 
         public override void Pulse()
         {
+		if (_init)
             if (StyxWoW.Me.IsActuallyInCombat
                 || StyxWoW.Me.Mounted
                 || StyxWoW.Me.IsDead
                 || StyxWoW.Me.IsGhost
-                //|| Styx.CommonBot.LootTargeting.LootMobs
                 ) {
                 return;
             }
 
-            if (!sw.IsRunning) {
-                sw.Start();
-            }
-
-            if (sw.Elapsed.TotalSeconds > 1) { // throttle to 1s
+            if (InventoryCheck) { // Loot Event has Finished
                 foreach (WoWItem item in ObjectManager.GetObjectsOfType<WoWItem>()) { // iterate over every item
                     if (item != null && item.BagSlot != -1 && StyxWoW.Me.FreeNormalBagSlots >= 1) { // check if item exists and is in bag and we have space
                         if (_itemUseOnFive.Contains(item.Entry)) { // stacks of 5
@@ -346,13 +389,13 @@ namespace PluginTidyBags3
                             if (item.StackCount >= 1) {
                                 this.useItem(item);
                             }
-                        }
+                        } else if (_destroyItems.Contains(item.Entry)) {
+								this.destroyItem(item);
+						}
                     }
                 }
-
+				InventoryCheck = false;
                 StyxWoW.SleepForLagDuration();
-                sw.Reset();
-                sw.Start();
             }
         }
 
@@ -367,5 +410,13 @@ namespace PluginTidyBags3
             Lua.DoString("UseItemByName(\"" + item.Name + "\")");
             StyxWoW.SleepForLagDuration();
         }
+
+		private void destroyItem(WoWItem item) 
+		{
+			Logging.Write(LogLevel.Normal, Colors.DarkRed, "[{0} {1}]: Destroying {2} we have {3}", this.Name, this.Version, item.Name, item.StackCount);
+			item.PickUp();
+			Lua.DoString("DeleteCursorItem()");
+			StyxWoW.SleepForLagDuration();
+		}
     }
 }
