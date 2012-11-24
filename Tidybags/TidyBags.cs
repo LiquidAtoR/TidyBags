@@ -348,19 +348,18 @@ namespace PluginTidyBags3
         };
 		
 		private HashSet<uint> _destroyItems = new HashSet<uint>() {
-			45196, //Tattered Cloth
-			45189, //Torn Sail
 			45188, //Whitered Kelp
-			45195, //Empty Rum Botlle
+			45189, //Torn Sail
+			45190, //Driftwood
 			45191, //Empty Clam
 			45194, //Tangled Fishing Line
-			45201, //Rock
-			45190, //Driftwood
-			45200, //Sickly Fish
-			45198, //Weeds
-			44941, //Fresh-Squeezed Limeade
+			45195, //Empty Rum Bottle
+			45196, //Tattered Cloth
 			45197, //Tree Branch
-			45199 //Old Boot
+			45198, //Weeds
+			45199, //Old Boot
+			45200, //Sickly Fish
+			45201  //Rock
 		};
 
         public override void Pulse()
