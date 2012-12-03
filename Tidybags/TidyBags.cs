@@ -1,5 +1,5 @@
 ﻿/*
- * Tidy Bags v3.6.2.0 by LiquidAtoR
+ * Tidy Bags v3.6.2.1 by LiquidAtoR
  *
  * This is a trivial little addon that will tidy up on-use items like Clams and
  * Borean Leather Scraps. It uses a stopwatch to stop it spamming Pulse() and
@@ -7,6 +7,9 @@
  *
  * Credits to Ryns, MaiN, erenion, TIA, ShamWOW (Bobby53), Gilderoy and Samrick for their contributions
  * I would also like to thank everyone that has reported items that are added here in the list.
+ *
+ * 2012/12/03  v3.6.2.1
+ *				Added Silkworm Cocoon (Tailoring Imperial Silk).
  *
  * 2012/12/03  v3.6.2.0
  *				Added Greater Cache of Treasures (Scenario Reward).
@@ -196,7 +199,7 @@ namespace PluginTidyBags3
     {
         public override string Name { get { return "Tidy Bags 3.6 Reloaded"; } }
         public override string Author { get { return "LiquidAtoR"; } }
-        public override Version Version { get { return new Version(3,6,2,0); } }
+        public override Version Version { get { return new Version(3,6,2,1); } }
 		
 		public bool InventoryCheck = false;
 		
@@ -316,7 +319,8 @@ namespace PluginTidyBags3
 			90625, // Treasures of the Vale (Daily Quest Reward)
 			90716, // Good Fortune (when using a Lucky Charm on a boss for loot)
 			90840, // Marauder's Gleaming Sack of Gold (World Boss gold drop)
-			92813  // Greater Cache of Treasures (Scenario Reward)
+			92813, // Greater Cache of Treasures (Scenario Reward)
+			92960  // Silkworm Cocoon (Tailoring Imperial Silk)
         };
 
         private HashSet<uint> _itemUseOnFive = new HashSet<uint>() {
@@ -354,7 +358,8 @@ namespace PluginTidyBags3
 			90625, // Treasures of the Vale (Daily Quest Reward)
 			90716, // Good Fortune
 			90840, // Marauder's Gleaming Sack of Gold (World Boss gold drop)
-			92813  // Greater Cache of Treasures (Scenario Reward)
+			92813, // Greater Cache of Treasures (Scenario Reward)
+			92960  // Silkworm Cocoon (Tailoring Imperial Silk)
         };
 		
 		private HashSet<uint> _destroyItems = new HashSet<uint>() {
