@@ -1,5 +1,5 @@
 ﻿/*
- * Tidy Bags v3.6.2.1 by LiquidAtoR
+ * Tidy Bags v3.6.2.2 by LiquidAtoR
  *
  * This is a trivial little addon that will tidy up on-use items like Clams and
  * Borean Leather Scraps. It uses a stopwatch to stop it spamming Pulse() and
@@ -7,6 +7,9 @@
  *
  * Credits to Ryns, MaiN, erenion, TIA, ShamWOW (Bobby53), Gilderoy and Samrick for their contributions
  * I would also like to thank everyone that has reported items that are added here in the list.
+ *
+ * 2012/12/09  v3.6.2.2
+ *				Added Amber Encased Treasure Pouch (LFR Loot).
  *
  * 2012/12/03  v3.6.2.1
  *				Added Silkworm Cocoon (Tailoring Imperial Silk).
@@ -199,7 +202,7 @@ namespace PluginTidyBags3
     {
         public override string Name { get { return "Tidy Bags 3.6 Reloaded"; } }
         public override string Author { get { return "LiquidAtoR"; } }
-        public override Version Version { get { return new Version(3,6,2,1); } }
+        public override Version Version { get { return new Version(3,6,2,2); } }
 		
 		public bool InventoryCheck = false;
 		
@@ -315,6 +318,7 @@ namespace PluginTidyBags3
 			88496, // Sealed Crate (MoP version)
 			89613, // Cache of Treasures (Scenario Reward)
 			89804, // Cache of Mogu Riches (LFR Loot)
+			89807, // Amber Encased Treasure Pouch (LFR Loot)
             89810, // Bounty of a Sundered Land (LFR Contains 25G if you don't win gear)
 			90625, // Treasures of the Vale (Daily Quest Reward)
 			90716, // Good Fortune (when using a Lucky Charm on a boss for loot)
@@ -354,6 +358,7 @@ namespace PluginTidyBags3
 			87391, // Plundered Treasure (Luck of the Lotus Buff)
 			88496, // Sealed Crate (MoP version)
 			89804, // Cache of Mogu Riches (LFR Loot)
+			89807, // Amber Encased Treasure Pouch (LFR Loot)
 			89613, // Cache of Treasures (Scenario Reward)
 			90625, // Treasures of the Vale (Daily Quest Reward)
 			90716, // Good Fortune
