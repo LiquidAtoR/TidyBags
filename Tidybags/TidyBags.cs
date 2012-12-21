@@ -1,5 +1,5 @@
 ﻿/*
- * Tidy Bags v3.6.2.3 by LiquidAtoR
+ * Tidy Bags v3.6.2.4 by LiquidAtoR
  *
  * This is a trivial little addon that will tidy up on-use items like Clams and
  * Borean Leather Scraps. It uses a stopwatch to stop it spamming Pulse() and
@@ -8,7 +8,10 @@
  * Credits to Ryns, MaiN, erenion, TIA, ShamWOW (Bobby53), Gilderoy and Samrick for their contributions
  * I would also like to thank everyone that has reported items that are added here in the list.
  *
- * 2012/12/16  V3.6.2.3
+ * 2012/12/21  v3.6.2.4
+ *				Added Water Snail to the destroy items list.
+ *
+ * 2012/12/16  v3.6.2.3
  *				Added Dividends of the Everlasting Spring (LFR Loot).
  *
  * 2012/12/09  v3.6.2.2
@@ -205,7 +208,7 @@ namespace PluginTidyBags3
     {
         public override string Name { get { return "Tidy Bags 3.6 Reloaded"; } }
         public override string Author { get { return "LiquidAtoR"; } }
-        public override Version Version { get { return new Version(3,6,2,3); } }
+        public override Version Version { get { return new Version(3,6,2,4); } }
 		
 		public bool InventoryCheck = false;
 		
@@ -373,18 +376,19 @@ namespace PluginTidyBags3
         };
 		
 		private HashSet<uint> _destroyItems = new HashSet<uint>() {
-			45188, //Whitered Kelp
-			45189, //Torn Sail
-			45190, //Driftwood
-			45191, //Empty Clam
-			45194, //Tangled Fishing Line
-			45195, //Empty Rum Bottle
-			45196, //Tattered Cloth
-			45197, //Tree Branch
-			45198, //Weeds
-			45199, //Old Boot
-			45200, //Sickly Fish
-			45201  //Rock
+			45188, // Whitered Kelp
+			45189, // Torn Sail
+			45190, // Driftwood
+			45191, // Empty Clam
+			45194, // Tangled Fishing Line
+			45195, // Empty Rum Bottle
+			45196, // Tattered Cloth
+			45197, // Tree Branch
+			45198, // Weeds
+			45199, // Old Boot
+			45200, // Sickly Fish
+			45201, // Rock
+			45202  // Water Snail
 		};
 
         public override void Pulse()
