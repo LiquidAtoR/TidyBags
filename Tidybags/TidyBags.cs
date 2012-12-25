@@ -1,5 +1,5 @@
 ﻿/*
- * Tidy Bags v3.6.2.4 by LiquidAtoR
+ * Tidy Bags v3.6.2.5 by LiquidAtoR
  *
  * This is a trivial little addon that will tidy up on-use items like Clams and
  * Borean Leather Scraps. It uses a stopwatch to stop it spamming Pulse() and
@@ -7,6 +7,9 @@
  *
  * Credits to Ryns, MaiN, erenion, TIA, ShamWOW (Bobby53), Gilderoy and Samrick for their contributions
  * I would also like to thank everyone that has reported items that are added here in the list.
+ *
+ * 2012/12/25  v3.6.2.5
+ *				Added a luastring to enable AutoLoot on every startup of TidyBags.
  *
  * 2012/12/21  v3.6.2.4
  *				Added Water Snail to the destroy items list.
@@ -208,15 +211,15 @@ namespace PluginTidyBags3
     {
         public override string Name { get { return "Tidy Bags 3.6 Reloaded"; } }
         public override string Author { get { return "LiquidAtoR"; } }
-        public override Version Version { get { return new Version(3,6,2,4); } }
-		
+        public override Version Version { get { return new Version(3,6,2,5); } }
 		public bool InventoryCheck = false;
-		
 		private bool _init;
+		
         public override void Initialize()
         {
             if (_init) return;
             base.Initialize();
+			Lua.DoString("SetCVar('AutoLootDefault','1')");
 			Lua.Events.AttachEvent("LOOT_CLOSED", LootFinished);
             Logging.Write(LogLevel.Normal, Colors.DarkRed, "TidyBags 3.6 ready for use...");
             _init = true;
