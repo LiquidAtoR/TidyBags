@@ -1,5 +1,5 @@
 ﻿/*
- * Tidy Bags v3.6.2.5 by LiquidAtoR
+ * Tidy Bags v3.6.2.6 by LiquidAtoR
  *
  * This is a trivial little addon that will tidy up on-use items like Clams and
  * Borean Leather Scraps. It uses a stopwatch to stop it spamming Pulse() and
@@ -7,6 +7,9 @@
  *
  * Credits to Ryns, MaiN, erenion, TIA, ShamWOW (Bobby53), Gilderoy and Samrick for their contributions
  * I would also like to thank everyone that has reported items that are added here in the list.
+ *
+ * 2012/12/30  v3.6.2.6
+ *				Added attachment to Mail Events for plugin to run (MaxMuster Request).
  *
  * 2012/12/25  v3.6.2.5
  *				Added a luastring to enable AutoLoot on every startup of TidyBags.
@@ -211,7 +214,7 @@ namespace PluginTidyBags3
     {
         public override string Name { get { return "Tidy Bags 3.6 Reloaded"; } }
         public override string Author { get { return "LiquidAtoR"; } }
-        public override Version Version { get { return new Version(3,6,2,5); } }
+        public override Version Version { get { return new Version(3,6,2,6); } }
 		public bool InventoryCheck = false;
 		private bool _init;
 		
@@ -221,11 +224,20 @@ namespace PluginTidyBags3
             base.Initialize();
 			Lua.DoString("SetCVar('AutoLootDefault','1')");
 			Lua.Events.AttachEvent("LOOT_CLOSED", LootFinished);
+			Lua.Events.AttachEvent("MAIL_CLOSED", MailboxFinished);
             Logging.Write(LogLevel.Normal, Colors.DarkRed, "TidyBags 3.6 ready for use...");
             _init = true;
         }
 		
         private void LootFinished(object sender, LuaEventArgs args)
+        {
+            if (InventoryCheck == false)
+            {
+                InventoryCheck = true;
+            }
+        }
+		
+		private void MailboxFinished(object sender, LuaEventArgs args)
         {
             if (InventoryCheck == false)
             {
