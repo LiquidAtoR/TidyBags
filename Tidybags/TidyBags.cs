@@ -1,5 +1,5 @@
 ﻿/*
- * Tidy Bags v3.6.2.6 by LiquidAtoR
+ * Tidy Bags v3.6.2.7 by LiquidAtoR
  *
  * This is a trivial little addon that will tidy up on-use items like Clams and
  * Borean Leather Scraps. It uses a stopwatch to stop it spamming Pulse() and
@@ -7,6 +7,9 @@
  *
  * Credits to Ryns, MaiN, erenion, TIA, ShamWOW (Bobby53), Gilderoy and Samrick for their contributions
  * I would also like to thank everyone that has reported items that are added here in the list.
+ *
+ * 2013/02/13  v3.6.2.7
+ *				Moved lovely charm to use on 10 section (was in the general list).
  *
  * 2012/12/30  v3.6.2.6
  *				Added attachment to Mail Events for plugin to run (MaxMuster Request).
@@ -214,7 +217,7 @@ namespace PluginTidyBags3
     {
         public override string Name { get { return "Tidy Bags 3.6 Reloaded"; } }
         public override string Author { get { return "LiquidAtoR"; } }
-        public override Version Version { get { return new Version(3,6,2,6); } }
+        public override Version Version { get { return new Version(3,6,2,7); } }
 		public bool InventoryCheck = false;
 		private bool _init;
 		
@@ -279,7 +282,6 @@ namespace PluginTidyBags3
             44663, // Abandoned Adventurer's Satchel
             44700, // Brooding Darkwater Clam
             45909, // Giant Darkwater Clam
-            49655, // Lovely Charm (Love is in the Air item)
             51999, // Satchel of Helpful Goods (iLevel 25)
             52000, // Satchel of Helpful Goods (31)
             52001, // Satchel of Helpful Goods (41)
@@ -367,6 +369,7 @@ namespace PluginTidyBags3
             37703, // Crystallized Shadow
             37704, // Crystallized Life
             37705, // Crystallized Water
+            49655, // Lovely Charm (Love is in the Air item)
 			86547, // Skyshard
 			89112, // Mote of Harmony
 			90407  // Sparkling Shard (from Prospecting ores)
@@ -391,6 +394,19 @@ namespace PluginTidyBags3
         };
 		
 		private HashSet<uint> _destroyItems = new HashSet<uint>() {
+			19221, // Darkmoon Special Reserve
+			19222, // Cheap Beer
+			19223, // Darkmoon Dog
+			19224, // Red Hot Wings
+			19225, // Deep Fried Candybar
+			19299, // Fizzy Faire Drink
+			19300, // Bottled Winterspring Water
+			19304, // Spiced Beef Jerky
+			19305, // Pickled Kodo Foot
+			19306, // Crunchy Frog
+			21151, // Rumsey Rum Black Label
+			44940, // Corn-Breaded Sausage
+			44941, // Fresh-Squeezed Limeade
 			45188, // Whitered Kelp
 			45189, // Torn Sail
 			45190, // Driftwood
@@ -403,7 +419,9 @@ namespace PluginTidyBags3
 			45199, // Old Boot
 			45200, // Sickly Fish
 			45201, // Rock
-			45202  // Water Snail
+			45202, // Water Snail
+			73260, // Salty Sea Dog
+			74822  // Sasparilla Sinker
 		};
 
         public override void Pulse()
