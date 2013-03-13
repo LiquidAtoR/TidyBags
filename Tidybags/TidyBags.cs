@@ -1,5 +1,5 @@
 ﻿/*
- * Tidy Bags v3.6.2.7 by LiquidAtoR
+ * Tidy Bags v3.6.2.8 by LiquidAtoR
  *
  * This is a trivial little addon that will tidy up on-use items like Clams and
  * Borean Leather Scraps. It uses a stopwatch to stop it spamming Pulse() and
@@ -7,6 +7,9 @@
  *
  * Credits to Ryns, MaiN, erenion, TIA, ShamWOW (Bobby53), Gilderoy and Samrick for their contributions
  * I would also like to thank everyone that has reported items that are added here in the list.
+ *
+ * 2013/03/13  v3.6.2.8
+ *				Added Arcane Trove, Fortuitous Coffer and Treasures of the Thunder King (LFR Loot).
  *
  * 2013/02/13  v3.6.2.7
  *				Moved lovely charm to use on 10 section (was in the general list).
@@ -390,7 +393,10 @@ namespace PluginTidyBags3
 			90716, // Good Fortune
 			90840, // Marauder's Gleaming Sack of Gold (World Boss gold drop)
 			92813, // Greater Cache of Treasures (Scenario Reward)
-			92960  // Silkworm Cocoon (Tailoring Imperial Silk)
+			92960, // Silkworm Cocoon (Tailoring Imperial Silk)
+			94219, // Arcane Trove (Daily Quest Reward IoTK)
+			94566, // Fortuitous Coffer (Loot Item IoTK)
+			95343  // Treasures of the Thunder King (LFR Loot)
         };
 		
 		private HashSet<uint> _destroyItems = new HashSet<uint>() {
