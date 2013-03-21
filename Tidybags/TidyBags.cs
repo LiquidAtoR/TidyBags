@@ -1,5 +1,5 @@
 ﻿/*
- * Tidy Bags v3.6.2.8 by LiquidAtoR
+ * Tidy Bags v3.6.2.9 by LiquidAtoR
  *
  * This is a trivial little addon that will tidy up on-use items like Clams and
  * Borean Leather Scraps. It uses a stopwatch to stop it spamming Pulse() and
@@ -7,6 +7,9 @@
  *
  * Credits to Ryns, MaiN, erenion, TIA, ShamWOW (Bobby53), Gilderoy and Samrick for their contributions
  * I would also like to thank everyone that has reported items that are added here in the list.
+ *
+ * 2013/03/21  v3.6.2.9
+ *				Added Mantid Archaeology items for packaging.
  *
  * 2013/03/13  v3.6.2.8
  *				Added Arcane Trove, Fortuitous Coffer and Treasures of the Thunder King (LFR Loot).
@@ -220,7 +223,7 @@ namespace PluginTidyBags3
     {
         public override string Name { get { return "Tidy Bags 3.6 Reloaded"; } }
         public override string Author { get { return "LiquidAtoR"; } }
-        public override Version Version { get { return new Version(3,6,2,7); } }
+        public override Version Version { get { return new Version(3,6,2,9); } }
 		public bool InventoryCheck = false;
 		private bool _init;
 		
@@ -351,7 +354,15 @@ namespace PluginTidyBags3
 			90716, // Good Fortune (when using a Lucky Charm on a boss for loot)
 			90840, // Marauder's Gleaming Sack of Gold (World Boss gold drop)
 			92813, // Greater Cache of Treasures (Scenario Reward)
-			92960  // Silkworm Cocoon (Tailoring Imperial Silk)
+			92960, // Silkworm Cocoon (Tailoring Imperial Silk)
+			139776,// Banner of the Mantid Empire (Archaeology)
+			139779,// Ancient Sap Feeder (Archaeology)
+			139780,// The Praying Mantid (Archaeology)
+			139781,// Inert Sound Beacon (Archaeology)
+			139782,// Remains of a Paragon (Archaeology)
+			139783,// Mantid Lamp (Archaeology)
+			139784,// Pollen Collector (Archaeology)
+			139785 // Kypari ap Container (Archaeology)
         };
 
         private HashSet<uint> _itemUseOnFive = new HashSet<uint>() {
