@@ -1,5 +1,5 @@
 ﻿/*
- * Tidy Bags v3.6.3.0 by LiquidAtoR
+ * Tidy Bags v3.6.3.1 by LiquidAtoR
  *
  * This is a trivial little addon that will tidy up on-use items like Clams and
  * Borean Leather Scraps. It uses a stopwatch to stop it spamming Pulse() and
@@ -7,6 +7,9 @@
  *
  * Credits to Ryns, MaiN, erenion, TIA, ShamWOW (Bobby53), Gilderoy and Samrick for their contributions
  * I would also like to thank everyone that has reported items that are added here in the list.
+ *
+ * 2013/03/24  v3.6.3.1
+ *				Added Shiny Pile of Refuse (Oondasta's Consolidation Loot)
  *
  * 2013/03/24  v3.6.3.0
  *				Added Cache of Sha-Touched Gold (LFR Loot).
@@ -226,7 +229,7 @@ namespace PluginTidyBags3
     {
         public override string Name { get { return "Tidy Bags 3.6 Reloaded"; } }
         public override string Author { get { return "LiquidAtoR"; } }
-        public override Version Version { get { return new Version(3,6,3,0); } }
+        public override Version Version { get { return new Version(3,6,3,1); } }
 		public bool InventoryCheck = false;
 		private bool _init;
 		
@@ -411,7 +414,8 @@ namespace PluginTidyBags3
 			92960, // Silkworm Cocoon (Tailoring Imperial Silk)
 			94219, // Arcane Trove (Daily Quest Reward IoTK)
 			94566, // Fortuitous Coffer (Loot Item IoTK)
-			95343  // Treasures of the Thunder King (LFR Loot)
+			95343, // Treasures of the Thunder King (LFR Loot)
+			95601  // Shiny Pile of Refuse (World Boss drop)
         };
 		
 		private HashSet<uint> _destroyItems = new HashSet<uint>() {
