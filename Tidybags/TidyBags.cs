@@ -1,5 +1,5 @@
 ﻿/*
- * Tidy Bags v3.6.2.9 by LiquidAtoR
+ * Tidy Bags v3.6.3.0 by LiquidAtoR
  *
  * This is a trivial little addon that will tidy up on-use items like Clams and
  * Borean Leather Scraps. It uses a stopwatch to stop it spamming Pulse() and
@@ -7,6 +7,9 @@
  *
  * Credits to Ryns, MaiN, erenion, TIA, ShamWOW (Bobby53), Gilderoy and Samrick for their contributions
  * I would also like to thank everyone that has reported items that are added here in the list.
+ *
+ * 2013/03/24  v3.6.3.0
+ *				Added Cache of Sha-Touched Gold (LFR Loot).
  *
  * 2013/03/21  v3.6.2.9
  *				Added Mantid Archaeology items for packaging.
@@ -223,7 +226,7 @@ namespace PluginTidyBags3
     {
         public override string Name { get { return "Tidy Bags 3.6 Reloaded"; } }
         public override string Author { get { return "LiquidAtoR"; } }
-        public override Version Version { get { return new Version(3,6,2,9); } }
+        public override Version Version { get { return new Version(3,6,3,0); } }
 		public bool InventoryCheck = false;
 		private bool _init;
 		
@@ -403,6 +406,7 @@ namespace PluginTidyBags3
 			90625, // Treasures of the Vale (Daily Quest Reward)
 			90716, // Good Fortune
 			90840, // Marauder's Gleaming Sack of Gold (World Boss gold drop)
+			90839, // Cache of Sha-Touched Gold (World Boss gold drop)
 			92813, // Greater Cache of Treasures (Scenario Reward)
 			92960, // Silkworm Cocoon (Tailoring Imperial Silk)
 			94219, // Arcane Trove (Daily Quest Reward IoTK)
