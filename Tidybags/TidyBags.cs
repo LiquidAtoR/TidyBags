@@ -1,5 +1,5 @@
 ﻿/*
- * Tidy Bags v3.6.3.1 by LiquidAtoR
+ * Tidy Bags v3.6.3.2 by LiquidAtoR
  *
  * This is a trivial little addon that will tidy up on-use items like Clams and
  * Borean Leather Scraps. It uses a stopwatch to stop it spamming Pulse() and
@@ -7,6 +7,9 @@
  *
  * Credits to Ryns, MaiN, erenion, TIA, ShamWOW (Bobby53), Gilderoy and Samrick for their contributions
  * I would also like to thank everyone that has reported items that are added here in the list.
+ *
+ * 2013/04/03  v3.6.3.2
+ *				Added Pandaria Herbs (Laria request) and Brightly Colored Egg (flying and csl5707 request).
  *
  * 2013/03/24  v3.6.3.1
  *				Added Shiny Pile of Refuse (Oondasta's Consolidation Loot)
@@ -229,7 +232,7 @@ namespace PluginTidyBags3
     {
         public override string Name { get { return "Tidy Bags 3.6 Reloaded"; } }
         public override string Author { get { return "LiquidAtoR"; } }
-        public override Version Version { get { return new Version(3,6,3,1); } }
+        public override Version Version { get { return new Version(3,6,3,2); } }
 		public bool InventoryCheck = false;
 		private bool _init;
 		
@@ -293,6 +296,7 @@ namespace PluginTidyBags3
             44475, // Reinforced Crate
             44663, // Abandoned Adventurer's Satchel
             44700, // Brooding Darkwater Clam
+			45072, // Brightly Colored Egg (Noble Garden Event)
             45909, // Giant Darkwater Clam
             51999, // Satchel of Helpful Goods (iLevel 25)
             52000, // Satchel of Helpful Goods (31)
@@ -402,6 +406,7 @@ namespace PluginTidyBags3
 			72201, // Plump Intestines
 			87391, // Plundered Treasure (Luck of the Lotus Buff)
 			88496, // Sealed Crate (MoP version)
+			89610, // Pandaria Herbs (Trade for Spirit of Harmony)
 			89804, // Cache of Mogu Riches (LFR Loot)
 			89807, // Amber Encased Treasure Pouch (LFR Loot)
 			89808, // Dividends of the Everlasting Spring (LFR Loot)
