@@ -1,5 +1,5 @@
 ﻿/*
- * Tidy Bags v3.6.3.2 by LiquidAtoR
+ * Tidy Bags v3.6.3.3 by LiquidAtoR
  *
  * This is a trivial little addon that will tidy up on-use items like Clams and
  * Borean Leather Scraps. It uses a stopwatch to stop it spamming Pulse() and
@@ -7,6 +7,9 @@
  *
  * Credits to Ryns, MaiN, erenion, TIA, ShamWOW (Bobby53), Gilderoy and Samrick for their contributions
  * I would also like to thank everyone that has reported items that are added here in the list.
+ *
+ * 2013/04/05  v3.6.3.3
+ *				Added Mage Hunter Personal Effects (Tumbum request).
  *
  * 2013/04/03  v3.6.3.2
  *				Added Pandaria Herbs (Laria request) and Brightly Colored Egg (flying and csl5707 request).
@@ -232,7 +235,7 @@ namespace PluginTidyBags3
     {
         public override string Name { get { return "Tidy Bags 3.6 Reloaded"; } }
         public override string Author { get { return "LiquidAtoR"; } }
-        public override Version Version { get { return new Version(3,6,3,2); } }
+        public override Version Version { get { return new Version(3,6,3,3); } }
 		public bool InventoryCheck = false;
 		private bool _init;
 		
@@ -291,6 +294,7 @@ namespace PluginTidyBags3
             27511, // Inscribed Scrollcase
             27513, // Curious Crate
             32724, // Sludge Covered Object
+			35792, // Mage Hunter Personal Effects
             35945, // Brilliant Glass (Daily Cooldown for Jewelcrafting - The Burning Crusade Edition)
             36781, // Darkwater Clam
             44475, // Reinforced Crate
