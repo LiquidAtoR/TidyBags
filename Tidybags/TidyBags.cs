@@ -1,12 +1,15 @@
 ﻿/*
- * Tidy Bags v3.6.3.3 by LiquidAtoR
+ * Tidy Bags v3.6.3.4 by LiquidAtoR
  *
  * This is a trivial little addon that will tidy up on-use items like Clams and
  * Borean Leather Scraps. It uses a stopwatch to stop it spamming Pulse() and
  * only runs when out of combat. Originally Created by Ryns.
  *
- * Credits to Ryns, MaiN, erenion, TIA, ShamWOW (Bobby53), Gilderoy and Samrick for their contributions
+ * Credits to Ryns, MaiN, erenion, TIA, ShamWOW (Bobby53), Gilderoy, Samrick and Pasterke for their contributions
  * I would also like to thank everyone that has reported items that are added here in the list.
+ *
+ * 2013/04/14  v3.6.3.4
+ *				Changed the ID's to match the new 5.2 ID's for LFR bags (Thanks Laria for reporting 1 change).
  *
  * 2013/04/05  v3.6.3.3
  *				Added Mage Hunter Personal Effects (Tumbum request).
@@ -235,7 +238,7 @@ namespace PluginTidyBags3
     {
         public override string Name { get { return "Tidy Bags 3.6 Reloaded"; } }
         public override string Author { get { return "LiquidAtoR"; } }
-        public override Version Version { get { return new Version(3,6,3,3); } }
+        public override Version Version { get { return new Version(3,6,3,4); } }
 		public bool InventoryCheck = false;
 		private bool _init;
 		
@@ -357,18 +360,7 @@ namespace PluginTidyBags3
 			79915, // Warlord's Branding Iron (Archaeology)
 			79916, // Mogu Coin (Archaeology)
 			79917, // Worn Monument Ledger (Archaeology)
-			87391, // Plundered Treasure (Luck of the Lotus Buff)
 			88496, // Sealed Crate (MoP version)
-			89613, // Cache of Treasures (Scenario Reward)
-			89804, // Cache of Mogu Riches (LFR Loot)
-			89807, // Amber Encased Treasure Pouch (LFR Loot)
-			89808, // Dividends of the Everlasting Spring (LFR Loot)
-            89810, // Bounty of a Sundered Land (LFR Contains 25G if you don't win gear)
-			90625, // Treasures of the Vale (Daily Quest Reward)
-			90716, // Good Fortune (when using a Lucky Charm on a boss for loot)
-			90840, // Marauder's Gleaming Sack of Gold (World Boss gold drop)
-			92813, // Greater Cache of Treasures (Scenario Reward)
-			92960, // Silkworm Cocoon (Tailoring Imperial Silk)
 			139776,// Banner of the Mantid Empire (Archaeology)
 			139779,// Ancient Sap Feeder (Archaeology)
 			139780,// The Praying Mantid (Archaeology)
@@ -376,7 +368,7 @@ namespace PluginTidyBags3
 			139782,// Remains of a Paragon (Archaeology)
 			139783,// Mantid Lamp (Archaeology)
 			139784,// Pollen Collector (Archaeology)
-			139785 // Kypari ap Container (Archaeology)
+			139785 // Kypari sap Container (Archaeology)
         };
 
         private HashSet<uint> _itemUseOnFive = new HashSet<uint>() {
@@ -411,20 +403,21 @@ namespace PluginTidyBags3
 			87391, // Plundered Treasure (Luck of the Lotus Buff)
 			88496, // Sealed Crate (MoP version)
 			89610, // Pandaria Herbs (Trade for Spirit of Harmony)
-			89804, // Cache of Mogu Riches (LFR Loot)
-			89807, // Amber Encased Treasure Pouch (LFR Loot)
-			89808, // Dividends of the Everlasting Spring (LFR Loot)
 			89613, // Cache of Treasures (Scenario Reward)
+			89810, // Bounty of a Sundered Land (LFR Bonus Roll Gold Reward)
 			90625, // Treasures of the Vale (Daily Quest Reward)
-			90716, // Good Fortune
-			90840, // Marauder's Gleaming Sack of Gold (World Boss gold drop)
+			90716, // Good Fortune (When using a Lucky Charm on a boss for loot)
 			90839, // Cache of Sha-Touched Gold (World Boss gold drop)
+			90840, // Marauder's Gleaming Sack of Gold (World Boss gold drop)
 			92813, // Greater Cache of Treasures (Scenario Reward)
 			92960, // Silkworm Cocoon (Tailoring Imperial Silk)
 			94219, // Arcane Trove (Daily Quest Reward IoTK)
 			94566, // Fortuitous Coffer (Loot Item IoTK)
 			95343, // Treasures of the Thunder King (LFR Loot)
-			95601  // Shiny Pile of Refuse (World Boss drop)
+			95601, // Shiny Pile of Refuse (World Boss drop)
+			95617, // Dividends of the Everlasting Spring (LFR Loot)
+			95618, // Cache of Mogu Riches (LFR Loot)
+			95619  // Amber Encased Treasure Pouch (LFR Loot)
         };
 		
 		private HashSet<uint> _destroyItems = new HashSet<uint>() {
