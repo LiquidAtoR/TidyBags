@@ -1,5 +1,5 @@
 ﻿/*
- * Tidy Bags v3.6.3.4 by LiquidAtoR
+ * Tidy Bags v3.6.3.5 by LiquidAtoR
  *
  * This is a trivial little addon that will tidy up on-use items like Clams and
  * Borean Leather Scraps. It uses a stopwatch to stop it spamming Pulse() and
@@ -7,6 +7,9 @@
  *
  * Credits to Ryns, MaiN, erenion, TIA, ShamWOW (Bobby53), Gilderoy, Samrick and Pasterke for their contributions
  * I would also like to thank everyone that has reported items that are added here in the list.
+ *
+ * 2013/04/25  v3.6.3.5
+ *				Cleaned up to much without able to test it, thanks ubergoober for pointing it out.
  *
  * 2013/04/14  v3.6.3.4
  *				Changed the ID's to match the new 5.2 ID's for LFR bags (Thanks Laria for reporting 1 change).
@@ -238,7 +241,7 @@ namespace PluginTidyBags3
     {
         public override string Name { get { return "Tidy Bags 3.6 Reloaded"; } }
         public override string Author { get { return "LiquidAtoR"; } }
-        public override Version Version { get { return new Version(3,6,3,4); } }
+        public override Version Version { get { return new Version(3,6,3,5); } }
 		public bool InventoryCheck = false;
 		private bool _init;
 		
@@ -360,7 +363,24 @@ namespace PluginTidyBags3
 			79915, // Warlord's Branding Iron (Archaeology)
 			79916, // Mogu Coin (Archaeology)
 			79917, // Worn Monument Ledger (Archaeology)
+			87391, // Plundered Treasure (Luck of the Lotus Buff)
 			88496, // Sealed Crate (MoP version)
+			89610, // Pandaria Herbs (Trade for Spirit of Harmony)
+			89613, // Cache of Treasures (Scenario Reward)
+			89810, // Bounty of a Sundered Land (LFR Bonus Roll Gold Reward)
+			90625, // Treasures of the Vale (Daily Quest Reward)
+			90716, // Good Fortune (When using a Lucky Charm on a boss for loot)
+			90839, // Cache of Sha-Touched Gold (World Boss gold drop)
+			90840, // Marauder's Gleaming Sack of Gold (World Boss gold drop)
+			92813, // Greater Cache of Treasures (Scenario Reward)
+			92960, // Silkworm Cocoon (Tailoring Imperial Silk)
+			94219, // Arcane Trove (Daily Quest Reward IoTK)
+			94566, // Fortuitous Coffer (Loot Item IoTK)
+			95343, // Treasures of the Thunder King (LFR Loot)
+			95601, // Shiny Pile of Refuse (World Boss drop)
+			95617, // Dividends of the Everlasting Spring (LFR Loot)
+			95618, // Cache of Mogu Riches (LFR Loot)
+			95619, // Amber Encased Treasure Pouch (LFR Loot)
 			139776,// Banner of the Mantid Empire (Archaeology)
 			139779,// Ancient Sap Feeder (Archaeology)
 			139780,// The Praying Mantid (Archaeology)
@@ -397,9 +417,9 @@ namespace PluginTidyBags3
 
         private HashSet<uint> _itemRequiresSleep = new HashSet<uint>() {
             61387, // Hidden Stash
-            67495, // Strange Bloated Stomach
+            67495, // Strange Bloated Stomach (Cataclysm Skinning)
             67539, // Tiny Treasure Chest
-			72201, // Plump Intestines
+			72201, // Plump Intestines (MoP Skinning)
 			87391, // Plundered Treasure (Luck of the Lotus Buff)
 			88496, // Sealed Crate (MoP version)
 			89610, // Pandaria Herbs (Trade for Spirit of Harmony)
