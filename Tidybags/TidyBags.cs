@@ -1,5 +1,5 @@
 ﻿/*
- * Tidy Bags v3.6.3.5 by LiquidAtoR
+ * Tidy Bags v3.6.3.6 by LiquidAtoR
  *
  * This is a trivial little addon that will tidy up on-use items like Clams and
  * Borean Leather Scraps. It uses a stopwatch to stop it spamming Pulse() and
@@ -7,6 +7,9 @@
  *
  * Credits to Ryns, MaiN, erenion, TIA, ShamWOW (Bobby53), Gilderoy, Samrick and Pasterke for their contributions
  * I would also like to thank everyone that has reported items that are added here in the list.
+ *
+ * 2013/05/05  v3.6.3.6
+ *              Added Stormtouched Cache (Nalak World Boss Consolidation Loot)
  *
  * 2013/04/25  v3.6.3.5
  *				Cleaned up to much without able to test it, thanks ubergoober for pointing it out.
@@ -241,7 +244,7 @@ namespace PluginTidyBags3
     {
         public override string Name { get { return "Tidy Bags 3.6 Reloaded"; } }
         public override string Author { get { return "LiquidAtoR"; } }
-        public override Version Version { get { return new Version(3,6,3,5); } }
+        public override Version Version { get { return new Version(3,6,3,6); } }
 		public bool InventoryCheck = false;
 		private bool _init;
 		
@@ -378,6 +381,7 @@ namespace PluginTidyBags3
 			94566, // Fortuitous Coffer (Loot Item IoTK)
 			95343, // Treasures of the Thunder King (LFR Loot)
 			95601, // Shiny Pile of Refuse (World Boss drop)
+			95602, // Stormtouched Cache (World Boss drop)
 			95617, // Dividends of the Everlasting Spring (LFR Loot)
 			95618, // Cache of Mogu Riches (LFR Loot)
 			95619, // Amber Encased Treasure Pouch (LFR Loot)
@@ -435,6 +439,7 @@ namespace PluginTidyBags3
 			94566, // Fortuitous Coffer (Loot Item IoTK)
 			95343, // Treasures of the Thunder King (LFR Loot)
 			95601, // Shiny Pile of Refuse (World Boss drop)
+			95602, // Stormtouched Cache (World Boss drop)
 			95617, // Dividends of the Everlasting Spring (LFR Loot)
 			95618, // Cache of Mogu Riches (LFR Loot)
 			95619  // Amber Encased Treasure Pouch (LFR Loot)
