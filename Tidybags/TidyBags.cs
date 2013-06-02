@@ -1,5 +1,5 @@
 ﻿/*
- * Tidy Bags v3.6.3.6 by LiquidAtoR
+ * Tidy Bags v3.6.3.7 by LiquidAtoR
  *
  * This is a trivial little addon that will tidy up on-use items like Clams and
  * Borean Leather Scraps. It uses a stopwatch to stop it spamming Pulse() and
@@ -7,6 +7,13 @@
  *
  * Credits to Ryns, MaiN, erenion, TIA, ShamWOW (Bobby53), Gilderoy, Samrick and Pasterke for their contributions
  * I would also like to thank everyone that has reported items that are added here in the list.
+ *
+ * 2013/06/02  v3.6.3.7
+ *              Added 5.3 items to the on-use lists (request by Proto, Zamphire and Kavlantis).
+ *              Added a UseOnThree part (suggestion by Proto).
+ *              Added Cracked Primal Egg (request by Laria).
+ *              Added Kyparite Fragment, a few new ID's for older items and a all new Heroic Cache (Heroic Scenario Reward).
+ *              Added the Gold container rewards for the Brawler Guild Fights.
  *
  * 2013/05/05  v3.6.3.6
  *              Added Stormtouched Cache (Nalak World Boss Consolidation Loot)
@@ -244,7 +251,7 @@ namespace PluginTidyBags3
     {
         public override string Name { get { return "Tidy Bags 3.6 Reloaded"; } }
         public override string Author { get { return "LiquidAtoR"; } }
-        public override Version Version { get { return new Version(3,6,3,6); } }
+        public override Version Version { get { return new Version(3,6,3,7); } }
 		public bool InventoryCheck = false;
 		private bool _init;
 		
@@ -377,7 +384,9 @@ namespace PluginTidyBags3
 			90840, // Marauder's Gleaming Sack of Gold (World Boss gold drop)
 			92813, // Greater Cache of Treasures (Scenario Reward)
 			92960, // Silkworm Cocoon (Tailoring Imperial Silk)
-			94219, // Arcane Trove (Daily Quest Reward IoTK)
+			94219, // Arcane Trove (Daily Quest Reward IoTK Alliance)
+			94220, // Sunreaver Bounty (Daily Quest Reward IoTK Horde)
+			94296, // Cracked Primal Egg
 			94566, // Fortuitous Coffer (Loot Item IoTK)
 			95343, // Treasures of the Thunder King (LFR Loot)
 			95601, // Shiny Pile of Refuse (World Boss drop)
@@ -385,6 +394,18 @@ namespace PluginTidyBags3
 			95617, // Dividends of the Everlasting Spring (LFR Loot)
 			95618, // Cache of Mogu Riches (LFR Loot)
 			95619, // Amber Encased Treasure Pouch (LFR Loot)
+			98096, // Large Sack of Coins (Brawler Fight Reward)
+			98097, // Huge Sack of Coins (Brawler Fight Reward)
+			98098, // Bulging Sack of Coins (Brawler Fight Reward)
+			98099, // Giant Sack of Coins (Brawler Fight Reward)
+			98100, // Humongous Sack of Coins (Brawler Fight Reward)
+			98101, // Enormous Sack of Coins (Brawler Fight Reward)
+			98102, // Overflowing Sack of Coins (Brawler Fight Reward)
+			98103, // Gigantic Sack of Coins (Brawler Fight Reward)
+			98133, // Greater Cache of Treasures (Scenario Reward)
+			98134, // Heroic Cache of Treasures (Heroic Scenario Reward)
+			98560, // Arcane Trove (Vendor Version Alliance)
+			98562, // Sunreaver Bounty (Vendor Version Horde)
 			139776,// Banner of the Mantid Empire (Archaeology)
 			139779,// Ancient Sap Feeder (Archaeology)
 			139780,// The Praying Mantid (Archaeology)
@@ -395,6 +416,20 @@ namespace PluginTidyBags3
 			139785 // Kypari sap Container (Archaeology)
         };
 
+        private HashSet<uint> _itemUseOnThree = new HashSet<uint>() {
+			10938, // Lesser Magic Essence
+			10998, // Lesser Astral Essence
+			11134, // Lesser Mystic Essence
+			11174, // Lesser Nether Essence
+			16202, // Lesser Eternal Essence
+			22447, // Lesser Planar Essence
+			34053, // Small Dream Shard
+			34056, // Lesser Cosmic Essence
+			52718, // Lesser Celestial Essence
+            74252, // Small Ethereal Shard
+            52720  // Small Heavenly Shard
+        };
+		
         private HashSet<uint> _itemUseOnFive = new HashSet<uint>() {
             33567 // Borean Leather Scraps
         };
@@ -416,7 +451,15 @@ namespace PluginTidyBags3
             49655, // Lovely Charm (Love is in the Air item)
 			86547, // Skyshard
 			89112, // Mote of Harmony
-			90407  // Sparkling Shard (from Prospecting ores)
+			90407, // Sparkling Shard (from Prospecting ores)
+			97512, // Ghost Iron Nugget
+			97546, // Kyparite Fragment
+			97619, // Torn Green Tea Leaf
+            97620, // Rain Poppy Petal
+            97621, // Silkweed Stem
+            97622, // Snow Lily Petal
+            97623, // Fool's Cap Spores
+            97624  // Desecrated Herb Pod
         };
 
         private HashSet<uint> _itemRequiresSleep = new HashSet<uint>() {
@@ -435,14 +478,28 @@ namespace PluginTidyBags3
 			90840, // Marauder's Gleaming Sack of Gold (World Boss gold drop)
 			92813, // Greater Cache of Treasures (Scenario Reward)
 			92960, // Silkworm Cocoon (Tailoring Imperial Silk)
-			94219, // Arcane Trove (Daily Quest Reward IoTK)
+			94219, // Arcane Trove (Daily Quest Reward IoTK Alliance)
+			94220, // Sunreaver Bounty (Daily Quest Reward IoTK Horde)
+			94296, // Cracked Primal Egg
 			94566, // Fortuitous Coffer (Loot Item IoTK)
 			95343, // Treasures of the Thunder King (LFR Loot)
 			95601, // Shiny Pile of Refuse (World Boss drop)
 			95602, // Stormtouched Cache (World Boss drop)
 			95617, // Dividends of the Everlasting Spring (LFR Loot)
 			95618, // Cache of Mogu Riches (LFR Loot)
-			95619  // Amber Encased Treasure Pouch (LFR Loot)
+			95619, // Amber Encased Treasure Pouch (LFR Loot)
+			98096, // Large Sack of Coins (Brawler Fight Reward)
+			98097, // Huge Sack of Coins (Brawler Fight Reward)
+			98098, // Bulging Sack of Coins (Brawler Fight Reward)
+			98099, // Giant Sack of Coins (Brawler Fight Reward)
+			98100, // Humongous Sack of Coins (Brawler Fight Reward)
+			98101, // Enormous Sack of Coins (Brawler Fight Reward)
+			98102, // Overflowing Sack of Coins (Brawler Fight Reward)
+			98103, // Gigantic Sack of Coins (Brawler Fight Reward)
+			98133, // Greater Cache of Treasures (Scenario Reward)
+			98134, // Heroic Cache of Treasures (Heroic Scenario Reward)
+			98560, // Arcane Trove (Vendor Version Alliance)
+			98562  // Sunreaver Bounty (Vendor Version Horde)
         };
 		
 		private HashSet<uint> _destroyItems = new HashSet<uint>() {
@@ -490,16 +547,20 @@ namespace PluginTidyBags3
             if (InventoryCheck) { // Loot Event has Finished
                 foreach (WoWItem item in ObjectManager.GetObjectsOfType<WoWItem>()) { // iterate over every item
                     if (item != null && item.BagSlot != -1 && StyxWoW.Me.FreeNormalBagSlots >= 1) { // check if item exists and is in bag and we have space
-                        if (_itemUseOnFive.Contains(item.Entry)) { // stacks of 5
+                        if (_itemUseOnOne.Contains(item.Entry)) { // stacks of 1
+                            if (item.StackCount >= 1) {
+                                this.useItem(item);
+                            }
+						} else if (_itemUseOnThree.Contains(item.Entry)) { // stacks of 3
+                            if (item.StackCount >= 3) {
+                                this.useItem(item);
+                            }
+						} else if (_itemUseOnFive.Contains(item.Entry)) { // stacks of 5
                             if (item.StackCount >= 5) {
                                 this.useItem(item);
                             }
                         } else if (_itemUseOnTen.Contains(item.Entry)) { // stacks of 10
                             if (item.StackCount >= 10) {
-                                this.useItem(item);
-                            }
-                        } else if (_itemUseOnOne.Contains(item.Entry)) { // stacks of 1
-                            if (item.StackCount >= 1) {
                                 this.useItem(item);
                             }
                         } else if (_destroyItems.Contains(item.Entry)) {
