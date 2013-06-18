@@ -1,5 +1,5 @@
 ﻿/*
- * Tidy Bags v3.6.3.7 by LiquidAtoR
+ * Tidy Bags v3.6.3.8 by LiquidAtoR
  *
  * This is a trivial little addon that will tidy up on-use items like Clams and
  * Borean Leather Scraps. It uses a stopwatch to stop it spamming Pulse() and
@@ -7,6 +7,9 @@
  *
  * Credits to Ryns, MaiN, erenion, TIA, ShamWOW (Bobby53), Gilderoy, Samrick and Pasterke for their contributions
  * I would also like to thank everyone that has reported items that are added here in the list.
+ *
+ * 2013/06/18  v3.6.3.8
+ *              Added Serpent's Heart (Daily Cooldown for Jewelcrafting - MoP Edition)
  *
  * 2013/06/02  v3.6.3.7
  *              Added 5.3 items to the on-use lists (request by Proto, Zamphire and Kavlantis).
@@ -251,7 +254,7 @@ namespace PluginTidyBags3
     {
         public override string Name { get { return "Tidy Bags 3.6 Reloaded"; } }
         public override string Author { get { return "LiquidAtoR"; } }
-        public override Version Version { get { return new Version(3,6,3,7); } }
+        public override Version Version { get { return new Version(3,6,3,8); } }
 		public bool InventoryCheck = false;
 		private bool _init;
 		
@@ -389,6 +392,7 @@ namespace PluginTidyBags3
 			94296, // Cracked Primal Egg
 			94566, // Fortuitous Coffer (Loot Item IoTK)
 			95343, // Treasures of the Thunder King (LFR Loot)
+			95469, // Serpent's Heart (Daily Cooldown for Jewelcrafting - MoP Edition)
 			95601, // Shiny Pile of Refuse (World Boss drop)
 			95602, // Stormtouched Cache (World Boss drop)
 			95617, // Dividends of the Everlasting Spring (LFR Loot)
@@ -404,6 +408,7 @@ namespace PluginTidyBags3
 			98103, // Gigantic Sack of Coins (Brawler Fight Reward)
 			98133, // Greater Cache of Treasures (Scenario Reward)
 			98134, // Heroic Cache of Treasures (Heroic Scenario Reward)
+			98546, // Bulging Heroic Cache of Treasures (First Heroic Scenario Reward)
 			98560, // Arcane Trove (Vendor Version Alliance)
 			98562, // Sunreaver Bounty (Vendor Version Horde)
 			139776,// Banner of the Mantid Empire (Archaeology)
@@ -498,6 +503,7 @@ namespace PluginTidyBags3
 			98103, // Gigantic Sack of Coins (Brawler Fight Reward)
 			98133, // Greater Cache of Treasures (Scenario Reward)
 			98134, // Heroic Cache of Treasures (Heroic Scenario Reward)
+			98546, // Bulging Heroic Cache of Treasures (First Heroic Scenario Reward)
 			98560, // Arcane Trove (Vendor Version Alliance)
 			98562  // Sunreaver Bounty (Vendor Version Horde)
         };
