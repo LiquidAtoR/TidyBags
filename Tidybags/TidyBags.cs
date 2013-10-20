@@ -1,5 +1,5 @@
 ﻿/*
- * Tidy Bags v3.6.3.8 by LiquidAtoR
+ * Tidy Bags v3.6.3.9 by LiquidAtoR
  *
  * This is a trivial little addon that will tidy up on-use items like Clams and
  * Borean Leather Scraps. It uses a stopwatch to stop it spamming Pulse() and
@@ -7,6 +7,11 @@
  *
  * Credits to Ryns, MaiN, erenion, TIA, ShamWOW (Bobby53), Gilderoy, Samrick and Pasterke for their contributions
  * I would also like to thank everyone that has reported items that are added here in the list.
+ *
+ * 2013/10/20  v3.6.3.9
+ *				Added Handful of Treats and Loot-Filled Pumpkin (Hallow's End Event) (ShortRound).
+ *				Added Darkmoon Game Prize (MaxMuster)
+ *				Added several items from Pandaria, Timeless Isle and the SoO raids.
  *
  * 2013/06/18  v3.6.3.8
  *              Added Serpent's Heart (Daily Cooldown for Jewelcrafting - MoP Edition)
@@ -254,7 +259,7 @@ namespace PluginTidyBags3
     {
         public override string Name { get { return "Tidy Bags 3.6 Reloaded"; } }
         public override string Author { get { return "LiquidAtoR"; } }
-        public override Version Version { get { return new Version(3,6,3,8); } }
+        public override Version Version { get { return new Version(3,6,3,9); } }
 		public bool InventoryCheck = false;
 		private bool _init;
 		
@@ -316,6 +321,7 @@ namespace PluginTidyBags3
 			35792, // Mage Hunter Personal Effects
             35945, // Brilliant Glass (Daily Cooldown for Jewelcrafting - The Burning Crusade Edition)
             36781, // Darkwater Clam
+			37586, // Handful of Treats (Hallow's End Event)
             44475, // Reinforced Crate
             44663, // Abandoned Adventurer's Satchel
             44700, // Brooding Darkwater Clam
@@ -329,6 +335,7 @@ namespace PluginTidyBags3
             52004, // Satchel of Helpful Goods (62)
             52005, // Satchel of Helpful Goods (66)
             52340, // Abyssal Clam
+			54516, // Loot-Filled Pumpkin (Hallow's End Event)
             61387, // Hidden Stash
             62242, // Icy Prism (Daily Cooldown for Jewelcrafting - Wrath Edition)
             64657, // Canopic Jar (Archaeology Tol'vir relic)
@@ -387,6 +394,7 @@ namespace PluginTidyBags3
 			90840, // Marauder's Gleaming Sack of Gold (World Boss gold drop)
 			92813, // Greater Cache of Treasures (Scenario Reward)
 			92960, // Silkworm Cocoon (Tailoring Imperial Silk)
+			93724, // Darkmoon Game Prize
 			94219, // Arcane Trove (Daily Quest Reward IoTK Alliance)
 			94220, // Sunreaver Bounty (Daily Quest Reward IoTK Horde)
 			94296, // Cracked Primal Egg
@@ -411,6 +419,15 @@ namespace PluginTidyBags3
 			98546, // Bulging Heroic Cache of Treasures (First Heroic Scenario Reward)
 			98560, // Arcane Trove (Vendor Version Alliance)
 			98562, // Sunreaver Bounty (Vendor Version Horde)
+			103624,// Treasures of the Vale (Zone Loot)
+			104034,// Purse of Timeless Coins (Timeless Isle)
+			104035,// Giant Purse of Timeless Coins (Timeless Isle)
+			104271,// Coalesced Turmoil (SoO LFR Loot)
+			104272,// Celestial Treasure Box (Timeless Isle Loot)
+			104273,// Flame-Scarred Cache of Offerings (Timeless Isle Loot)
+			104275,// Twisted Treasures of the Vale (SoO LFR Loot)
+			105713,// Twisted Treasures of the Vale (SoO Flex Loot)
+			105714,// Coalesced Turmoil (SoO Flex Loot)
 			139776,// Banner of the Mantid Empire (Archaeology)
 			139779,// Ancient Sap Feeder (Archaeology)
 			139780,// The Praying Mantid (Archaeology)
@@ -552,7 +569,7 @@ namespace PluginTidyBags3
 
             if (InventoryCheck) { // Loot Event has Finished
                 foreach (WoWItem item in ObjectManager.GetObjectsOfType<WoWItem>()) { // iterate over every item
-                    if (item != null && item.BagSlot != -1 && StyxWoW.Me.FreeNormalBagSlots >= 1) { // check if item exists and is in bag and we have space
+                    if (item != null && item.BagSlot != -1 && StyxWoW.Me.FreeNormalBagSlots >= 2) { // check if item exists and is in bag and we have space
                         if (_itemUseOnOne.Contains(item.Entry)) { // stacks of 1
                             if (item.StackCount >= 1) {
                                 this.useItem(item);
@@ -569,7 +586,7 @@ namespace PluginTidyBags3
                             if (item.StackCount >= 10) {
                                 this.useItem(item);
                             }
-                        } else if (_destroyItems.Contains(item.Entry)) {
+						} else if (_destroyItems.Contains(item.Entry)) {
 								this.destroyItem(item);
 						}
                     }
