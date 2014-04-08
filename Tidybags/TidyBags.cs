@@ -1,5 +1,5 @@
 ﻿/*
- * Tidy Bags v3.6.3.9 by LiquidAtoR
+ * Tidy Bags v3.6.4.0 by LiquidAtoR
  *
  * This is a trivial little addon that will tidy up on-use items like Clams and
  * Borean Leather Scraps. It uses a stopwatch to stop it spamming Pulse() and
@@ -8,6 +8,9 @@
  * Credits to Ryns, MaiN, erenion, TIA, ShamWOW (Bobby53), Gilderoy, Samrick and Pasterke for their contributions
  * I would also like to thank everyone that has reported items that are added here in the list.
  *
+ * 2014/04/08  v3.6.4.0
+ *              Added a few items as requested on forums.
+ *              
  * 2013/10/20  v3.6.3.9
  *				Added Handful of Treats and Loot-Filled Pumpkin (Hallow's End Event) (ShortRound).
  *				Added Darkmoon Game Prize (MaxMuster)
@@ -259,14 +262,14 @@ namespace PluginTidyBags3
     {
         public override string Name { get { return "Tidy Bags 3.6 Reloaded"; } }
         public override string Author { get { return "LiquidAtoR"; } }
-        public override Version Version { get { return new Version(3,6,3,9); } }
+        public override Version Version { get { return new Version(3,6,4,0); } }
 		public bool InventoryCheck = false;
 		private bool _init;
 		
         public override void Initialize()
         {
             if (_init) return;
-            base.Initialize();
+            base.OnEnable();
 			Lua.DoString("SetCVar('AutoLootDefault','1')");
 			Lua.Events.AttachEvent("LOOT_CLOSED", LootFinished);
 			Lua.Events.AttachEvent("MAIL_CLOSED", MailboxFinished);
@@ -336,6 +339,7 @@ namespace PluginTidyBags3
             52005, // Satchel of Helpful Goods (66)
             52340, // Abyssal Clam
 			54516, // Loot-Filled Pumpkin (Hallow's End Event)
+            57542, // Coldridge Mountaineer's Pouch 
             61387, // Hidden Stash
             62242, // Icy Prism (Daily Cooldown for Jewelcrafting - Wrath Edition)
             64657, // Canopic Jar (Archaeology Tol'vir relic)
@@ -383,6 +387,9 @@ namespace PluginTidyBags3
 			79915, // Warlord's Branding Iron (Archaeology)
 			79916, // Mogu Coin (Archaeology)
 			79917, // Worn Monument Ledger (Archaeology)
+            85224, // Basic Seed Pack
+            85225, // Basic Seed Pack
+            85226, // Basic Seed Pack
 			87391, // Plundered Treasure (Luck of the Lotus Buff)
 			88496, // Sealed Crate (MoP version)
 			89610, // Pandaria Herbs (Trade for Spirit of Harmony)
