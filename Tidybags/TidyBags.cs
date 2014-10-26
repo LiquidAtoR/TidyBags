@@ -1,5 +1,5 @@
 ﻿/*
- * Tidy Bags v3.6.4.0 by LiquidAtoR
+ * Tidy Bags v3.6.4.1 by LiquidAtoR
  *
  * This is a trivial little addon that will tidy up on-use items like Clams and
  * Borean Leather Scraps. It uses a stopwatch to stop it spamming Pulse() and
@@ -7,6 +7,9 @@
  *
  * Credits to Ryns, MaiN, erenion, TIA, ShamWOW (Bobby53), Gilderoy, Samrick and Pasterke for their contributions
  * I would also like to thank everyone that has reported items that are added here in the list.
+ *
+ * 2014/10/26  v3.6.4.1
+ *				Added fix from krad
  *
  * 2014/04/08  v3.6.4.0
  *              Added a few items as requested on forums.
@@ -262,20 +265,9 @@ namespace PluginTidyBags3
     {
         public override string Name { get { return "Tidy Bags 3.6 Reloaded"; } }
         public override string Author { get { return "LiquidAtoR"; } }
-        public override Version Version { get { return new Version(3,6,4,0); } }
+        public override Version Version { get { return new Version(3,6,4,1); } }
 		public bool InventoryCheck = false;
 		private bool _init;
-		
-        public override void Initialize()
-        {
-            if (_init) return;
-            base.OnEnable();
-			Lua.DoString("SetCVar('AutoLootDefault','1')");
-			Lua.Events.AttachEvent("LOOT_CLOSED", LootFinished);
-			Lua.Events.AttachEvent("MAIL_CLOSED", MailboxFinished);
-            Logging.Write(LogLevel.Normal, Colors.DarkRed, "TidyBags 3.6 ready for use...");
-            _init = true;
-        }
 		
         private void LootFinished(object sender, LuaEventArgs args)
         {
@@ -321,14 +313,14 @@ namespace PluginTidyBags3
             27511, // Inscribed Scrollcase
             27513, // Curious Crate
             32724, // Sludge Covered Object
-			35792, // Mage Hunter Personal Effects
+            35792, // Mage Hunter Personal Effects
             35945, // Brilliant Glass (Daily Cooldown for Jewelcrafting - The Burning Crusade Edition)
             36781, // Darkwater Clam
-			37586, // Handful of Treats (Hallow's End Event)
+            37586, // Handful of Treats (Hallow's End Event)
             44475, // Reinforced Crate
             44663, // Abandoned Adventurer's Satchel
             44700, // Brooding Darkwater Clam
-			45072, // Brightly Colored Egg (Noble Garden Event)
+            45072, // Brightly Colored Egg (Noble Garden Event)
             45909, // Giant Darkwater Clam
             51999, // Satchel of Helpful Goods (iLevel 25)
             52000, // Satchel of Helpful Goods (31)
@@ -338,7 +330,7 @@ namespace PluginTidyBags3
             52004, // Satchel of Helpful Goods (62)
             52005, // Satchel of Helpful Goods (66)
             52340, // Abyssal Clam
-			54516, // Loot-Filled Pumpkin (Hallow's End Event)
+            54516, // Loot-Filled Pumpkin (Hallow's End Event)
             57542, // Coldridge Mountaineer's Pouch 
             61387, // Hidden Stash
             62242, // Icy Prism (Daily Cooldown for Jewelcrafting - Wrath Edition)
@@ -349,7 +341,7 @@ namespace PluginTidyBags3
             67539, // Tiny Treasure Chest
             67597, // Sealed Crate (level 85 version)
             69903, // Satchel of Exotic Mysteries (LFD - Extra Reward)
-			72201, // Plump Intestines (MoP Skinning)
+            72201, // Plump Intestines (MoP Skinning)
             73478, // Fire Prism (Daily Cooldown for Jewelcrafting - Cataclysm Edition)
             78890, // Crystalline Geode (Dragon Soul Raid - Normal 10/25 every bossloot)
             78891, // Elementium-Coated Geode (Dragon Soul Raid - Normal 10/25 Deathwing Kill)
@@ -367,30 +359,30 @@ namespace PluginTidyBags3
             78908, // Sack o' Tokens (20 Darkmoon Faire Game Coins)
             78909, // Sack o' Tokens (20 Darkmoon Faire Game Coins)
             78930, // Sealed Crate (around the Darkmoon Faire Island)
-			79896, // Pandaren Tea Set (Archaeology)
-			79897, // Pandaren Game Board (Archaeology)
-			79898, // Twin Stein Set (Archaeology)
-			79899, // Walking Cane (Archaeology)
-			79900, // Empty Keg (Archaeology)
-			79901, // Carved Bronze Mirror (Archaeology)
-			79902, // Gold-Inlaid Figurine (Archaeology)
-			79903, // Apothecary Tins (Archaeology)
-			79904, // Pearl of Yu'lon (Archaeology)
-			79905, // Standard of Niuzao (Archaeology)
-			79908, // Manacles of Rebellion (Archaeology)
-			79909, // Cracked Mogu Runestone (Archaeology)
-			79910, // Terracotta Arm (Archaeology)
-			79911, // Petrified Bone Whip (Archaeology)
-			79912, // Thunder King Insignia (Archaeology)
-			79913, // Edicts of the Thunder King (Archaeology)
-			79914, // Iron Amulet (Archaeology)
-			79915, // Warlord's Branding Iron (Archaeology)
-			79916, // Mogu Coin (Archaeology)
-			79917, // Worn Monument Ledger (Archaeology)
+            79896, // Pandaren Tea Set (Archaeology)
+            79897, // Pandaren Game Board (Archaeology)
+            79898, // Twin Stein Set (Archaeology)
+            79899, // Walking Cane (Archaeology)
+            79900, // Empty Keg (Archaeology)
+            79901, // Carved Bronze Mirror (Archaeology)
+            79902, // Gold-Inlaid Figurine (Archaeology)
+            79903, // Apothecary Tins (Archaeology)
+            79904, // Pearl of Yu'lon (Archaeology)
+            79905, // Standard of Niuzao (Archaeology)
+            79908, // Manacles of Rebellion (Archaeology)
+            79909, // Cracked Mogu Runestone (Archaeology)
+            79910, // Terracotta Arm (Archaeology)
+            79911, // Petrified Bone Whip (Archaeology)
+            79912, // Thunder King Insignia (Archaeology)
+            79913, // Edicts of the Thunder King (Archaeology)
+            79914, // Iron Amulet (Archaeology)
+            79915, // Warlord's Branding Iron (Archaeology)
+            79916, // Mogu Coin (Archaeology)
+            79917, // Worn Monument Ledger (Archaeology)
             85224, // Basic Seed Pack
             85225, // Basic Seed Pack
             85226, // Basic Seed Pack
-			87391, // Plundered Treasure (Luck of the Lotus Buff)
+            87391, // Plundered Treasure (Luck of the Lotus Buff)
 			88496, // Sealed Crate (MoP version)
 			89610, // Pandaria Herbs (Trade for Spirit of Harmony)
 			89613, // Cache of Treasures (Scenario Reward)
@@ -446,15 +438,15 @@ namespace PluginTidyBags3
         };
 
         private HashSet<uint> _itemUseOnThree = new HashSet<uint>() {
-			10938, // Lesser Magic Essence
-			10998, // Lesser Astral Essence
-			11134, // Lesser Mystic Essence
-			11174, // Lesser Nether Essence
-			16202, // Lesser Eternal Essence
-			22447, // Lesser Planar Essence
-			34053, // Small Dream Shard
-			34056, // Lesser Cosmic Essence
-			52718, // Lesser Celestial Essence
+            10938, // Lesser Magic Essence
+            10998, // Lesser Astral Essence
+            11134, // Lesser Mystic Essence
+            11174, // Lesser Nether Essence
+            16202, // Lesser Eternal Essence
+            22447, // Lesser Planar Essence
+            34053, // Small Dream Shard
+            34056, // Lesser Cosmic Essence
+            52718, // Lesser Celestial Essence
             74252, // Small Ethereal Shard
             52720  // Small Heavenly Shard
         };
@@ -478,12 +470,12 @@ namespace PluginTidyBags3
             37704, // Crystallized Life
             37705, // Crystallized Water
             49655, // Lovely Charm (Love is in the Air item)
-			86547, // Skyshard
-			89112, // Mote of Harmony
-			90407, // Sparkling Shard (from Prospecting ores)
-			97512, // Ghost Iron Nugget
-			97546, // Kyparite Fragment
-			97619, // Torn Green Tea Leaf
+            86547, // Skyshard
+            89112, // Mote of Harmony
+            90407, // Sparkling Shard (from Prospecting ores)
+            97512, // Ghost Iron Nugget
+            97546, // Kyparite Fragment
+            97619, // Torn Green Tea Leaf
             97620, // Rain Poppy Petal
             97621, // Silkweed Stem
             97622, // Snow Lily Petal
@@ -495,8 +487,8 @@ namespace PluginTidyBags3
             61387, // Hidden Stash
             67495, // Strange Bloated Stomach (Cataclysm Skinning)
             67539, // Tiny Treasure Chest
-			72201, // Plump Intestines (MoP Skinning)
-			87391, // Plundered Treasure (Luck of the Lotus Buff)
+            72201, // Plump Intestines (MoP Skinning)
+            87391, // Plundered Treasure (Luck of the Lotus Buff)
 			88496, // Sealed Crate (MoP version)
 			89610, // Pandaria Herbs (Trade for Spirit of Harmony)
 			89613, // Cache of Treasures (Scenario Reward)
@@ -565,6 +557,16 @@ namespace PluginTidyBags3
 
         public override void Pulse()
         {
+            if (_init)
+            {
+                base.OnEnable();
+                Lua.DoString("SetCVar('AutoLootDefault','1')");
+                Lua.Events.AttachEvent("LOOT_CLOSED", LootFinished);
+                Lua.Events.AttachEvent("MAIL_CLOSED", MailboxFinished);
+                Logging.Write(LogLevel.Normal, Colors.DarkRed, "TidyBags 3.6 ready for use...");
+                _init = true;
+            }
+				
 		if (_init)
             if (StyxWoW.Me.IsActuallyInCombat
                 || StyxWoW.Me.Mounted
