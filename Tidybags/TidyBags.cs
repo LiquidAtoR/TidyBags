@@ -557,16 +557,15 @@ namespace PluginTidyBags3
 
         public override void Pulse()
         {
-            if (_init)
-            {
-                base.OnEnable();
-                Lua.DoString("SetCVar('AutoLootDefault','1')");
-                Lua.Events.AttachEvent("LOOT_CLOSED", LootFinished);
-                Lua.Events.AttachEvent("MAIL_CLOSED", MailboxFinished);
-                Logging.Write(LogLevel.Normal, Colors.DarkRed, "TidyBags 3.6 ready for use...");
-                _init = true;
+            if (!_init) {
+            base.OnEnable();
+			Lua.DoString("SetCVar('AutoLootDefault','1')");
+			Lua.Events.AttachEvent("LOOT_CLOSED", LootFinished);
+			Lua.Events.AttachEvent("MAIL_CLOSED", MailboxFinished);
+            Logging.Write(LogLevel.Normal, Colors.DarkRed, "TidyBags 3.6 ready for use...");
+            _init = true;
             }
-				
+			
 		if (_init)
             if (StyxWoW.Me.IsActuallyInCombat
                 || StyxWoW.Me.Mounted
