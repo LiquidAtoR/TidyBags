@@ -1,5 +1,5 @@
 ﻿/*
- * Tidy Bags v3.6.4.1 by LiquidAtoR
+ * Tidy Bags v3.6.4.2 by LiquidAtoR
  *
  * This is a trivial little addon that will tidy up on-use items like Clams and
  * Borean Leather Scraps. It uses a stopwatch to stop it spamming Pulse() and
@@ -7,6 +7,9 @@
  *
  * Credits to Ryns, MaiN, erenion, TIA, ShamWOW (Bobby53), Gilderoy, Samrick and Pasterke for their contributions
  * I would also like to thank everyone that has reported items that are added here in the list.
+ *
+ * 2014/11/01  v3.6.4.2
+ *				Added items from WoD, thanks to thestephen for supplying the ID's
  *
  * 2014/10/26  v3.6.4.1
  *				Added fix from krad
@@ -265,7 +268,7 @@ namespace PluginTidyBags3
     {
         public override string Name { get { return "Tidy Bags 3.6 Reloaded"; } }
         public override string Author { get { return "LiquidAtoR"; } }
-        public override Version Version { get { return new Version(3,6,4,1); } }
+        public override Version Version { get { return new Version(3,6,4,2); } }
 		public bool InventoryCheck = false;
 		private bool _init;
 		
@@ -480,7 +483,74 @@ namespace PluginTidyBags3
             97621, // Silkweed Stem
             97622, // Snow Lily Petal
             97623, // Fool's Cap Spores
-            97624  // Desecrated Herb Pod
+			97624, // Desecrated Herb Pod
+			108294, // Silver Ore Nugget
+			108295, // Tin Ore Nugget
+			108296, // Gold Ore Nugget
+			108297, // Iron Ore Nugget
+ 			108298, // Thorium Ore Nugget
+			108299, // Truesilver Ore Nugget
+ 			108300, // Mithril Ore Nugget
+ 			108301, // Fel Iron Ore Nugget
+ 			108302, // Adamantite Ore Nugget
+ 			108304, // Khorium Ore Nugget
+ 			108305, // Cobalt Ore Nugget
+ 			108306, // Saronite Ore Nugget
+ 			108307, // Obsidium Ore Nugget
+ 			108308, // Elementium Ore Nugget
+			108318, // Mageroyal Petal
+			108319, // Earthroot Stem
+			108320, // Briarthorn Bramble
+			108321, // Swiftthistle Leaf
+			108322, // Bruiseweed Stem
+			108323, // Wild Steelbloom Petal
+			108324, // Kingsblood Petal
+			108325, // Liferoot Stem
+			108326, // Khadgar's Whisker Stem
+			108327, // Grave Moss Leaf
+			108328, // Fadeleaf Petal
+			108329, // Dragon's Teeth Stem
+			108330, // Stranglekelp Blade
+			108331, // Goldthorn Bramble
+			108332, // Firebloom Petal
+			108333, // Purple Lotus Petal
+			108334, // Arthas' Tears Petal
+			108335, // Sungrass Stalk
+			108336, // Blindweed Stem
+			108337, // Ghost Mushroom Cap
+			108338, // Gromsblood Leaf
+			108339, // Dreamfoil Blade
+			108340, // Golden Sansam Leaf
+			108342, // Sorrowmoss Leaf
+			108343, // Icecap Petal
+			108344, // Felweed Stalk
+			108345, // Dreaming Glory Petal
+			108346, // Ragveil Cap
+			108347, // Terocone Leaf
+			108348, // Ancient Lichen Petal
+			108349, // Netherbloom Leaf
+			108351, // Mana Thistle Leaf
+			108352, // Goldclover Leaf
+			108353, // Adder's Tongue Stem
+			108354, // Tiger Lily Petal
+			108355, // Lichbloom Stalk
+ 			108356, // Icethorn Bramble
+			108357, // Talandra's Rose Petal
+			108358, // Deadnettle Bramble
+			108359, // Fire Leaf Bramble
+			108360, // Cinderbloom Petal
+			108361, // Stormvine Stalk
+			108362, // Azshara's Veil Stem
+			108363, // Heartblossom Petal
+			108364, // Twilight Jasmine Petal
+			108365, // Whiptail Stem
+			108391, // Titanium Ore Nugget
+			109626, // Gorgrond Flytrap Ichor
+			109627, // Starflower Petal
+			109628, // Nagrand Arrowbloom Petal
+			109629, // Talador Orchid Petal
+ 			112693, // Frostweed Seed
+			112694  // Fireweed Seed
         };
 
         private HashSet<uint> _itemRequiresSleep = new HashSet<uint>() {
