@@ -1,5 +1,5 @@
 ﻿/*
- * Tidy Bags v3.6.4.2 by LiquidAtoR
+ * Tidy Bags v3.6.4.3 by LiquidAtoR
  *
  * This is a trivial little addon that will tidy up on-use items like Clams and
  * Borean Leather Scraps. It uses a stopwatch to stop it spamming Pulse() and
@@ -7,6 +7,9 @@
  *
  * Credits to Ryns, MaiN, erenion, TIA, ShamWOW (Bobby53), Gilderoy, Samrick and Pasterke for their contributions
  * I would also like to thank everyone that has reported items that are added here in the list.
+ *
+ * 2014/11/08  v3.6.4.3
+ *				added Nightmare Vine Stem and Mountain Silversage Stalk as per request tret
  *
  * 2014/11/01  v3.6.4.2
  *				Added items from WoD, thanks to thestephen for supplying the ID's
@@ -268,7 +271,7 @@ namespace PluginTidyBags3
     {
         public override string Name { get { return "Tidy Bags 3.6 Reloaded"; } }
         public override string Author { get { return "LiquidAtoR"; } }
-        public override Version Version { get { return new Version(3,6,4,2); } }
+        public override Version Version { get { return new Version(3,6,4,3); } }
 		public bool InventoryCheck = false;
 		private bool _init;
 		
@@ -521,6 +524,7 @@ namespace PluginTidyBags3
 			108338, // Gromsblood Leaf
 			108339, // Dreamfoil Blade
 			108340, // Golden Sansam Leaf
+			108341, // Mountain Silversage Stalk
 			108342, // Sorrowmoss Leaf
 			108343, // Icecap Petal
 			108344, // Felweed Stalk
@@ -529,6 +533,7 @@ namespace PluginTidyBags3
 			108347, // Terocone Leaf
 			108348, // Ancient Lichen Petal
 			108349, // Netherbloom Leaf
+			108350, // Nightmare Vine Stem
 			108351, // Mana Thistle Leaf
 			108352, // Goldclover Leaf
 			108353, // Adder's Tongue Stem
