@@ -1,5 +1,5 @@
 ﻿/*
- * Tidy Bags v3.6.4.3 by LiquidAtoR
+ * Tidy Bags v3.6.4.4 by LiquidAtoR
  *
  * This is a trivial little addon that will tidy up on-use items like Clams and
  * Borean Leather Scraps. It uses a stopwatch to stop it spamming Pulse() and
@@ -8,8 +8,13 @@
  * Credits to Ryns, MaiN, erenion, TIA, ShamWOW (Bobby53), Gilderoy, Samrick and Pasterke for their contributions
  * I would also like to thank everyone that has reported items that are added here in the list.
  *
+ * 2014/11/30  v3.6.4.4
+ *				Added fishing items as per request Proto (thanks for the code), code is added but for now deactivated (// in front of each item)
+ *				Added missing items as per request Tayhatsu (thanks for the ID's)
+ *				Added some dungeon rewards as per request jeppe64 and Ericane (thanks for the ID's)
+ *
  * 2014/11/08  v3.6.4.3
- *				added Nightmare Vine Stem and Mountain Silversage Stalk as per request tret
+ *				Added Nightmare Vine Stem and Mountain Silversage Stalk as per request tret
  *
  * 2014/11/01  v3.6.4.2
  *				Added items from WoD, thanks to thestephen for supplying the ID's
@@ -271,7 +276,7 @@ namespace PluginTidyBags3
     {
         public override string Name { get { return "Tidy Bags 3.6 Reloaded"; } }
         public override string Author { get { return "LiquidAtoR"; } }
-        public override Version Version { get { return new Version(3,6,4,3); } }
+        public override Version Version { get { return new Version(3,6,4,4); } }
 		public bool InventoryCheck = false;
 		private bool _init;
 		
@@ -292,15 +297,15 @@ namespace PluginTidyBags3
         }
 
         private HashSet<uint> _itemUseOnOne = new HashSet<uint>() {
-            3352,  // Ooze-covered Bag
-            6351,  // Dented Crate
-            6352,  // Waterlogged Crate
-            6353,  // Small Chest
-            6356,  // Battered Chest
-            6357,  // Sealed Crate
-            5523,  // Small Barnacled Clam
-            5524,  // Thick-shelled Clam
-            7973,  // Big-mouth Clam
+            3352, // Ooze-covered Bag
+            6351, // Dented Crate
+            6352, // Waterlogged Crate
+            6353, // Small Chest
+            6356, // Battered Chest
+            6357, // Sealed Crate
+            5523, // Small Barnacled Clam
+            5524, // Thick-shelled Clam
+            7973, // Big-mouth Clam
             13874, // Heavy Crate
             20708, // Tightly Sealed Trunk
             20766, // Slimy Bag
@@ -424,23 +429,29 @@ namespace PluginTidyBags3
 			98546, // Bulging Heroic Cache of Treasures (First Heroic Scenario Reward)
 			98560, // Arcane Trove (Vendor Version Alliance)
 			98562, // Sunreaver Bounty (Vendor Version Horde)
-			103624,// Treasures of the Vale (Zone Loot)
-			104034,// Purse of Timeless Coins (Timeless Isle)
-			104035,// Giant Purse of Timeless Coins (Timeless Isle)
-			104271,// Coalesced Turmoil (SoO LFR Loot)
-			104272,// Celestial Treasure Box (Timeless Isle Loot)
-			104273,// Flame-Scarred Cache of Offerings (Timeless Isle Loot)
-			104275,// Twisted Treasures of the Vale (SoO LFR Loot)
-			105713,// Twisted Treasures of the Vale (SoO Flex Loot)
-			105714,// Coalesced Turmoil (SoO Flex Loot)
-			139776,// Banner of the Mantid Empire (Archaeology)
-			139779,// Ancient Sap Feeder (Archaeology)
-			139780,// The Praying Mantid (Archaeology)
-			139781,// Inert Sound Beacon (Archaeology)
-			139782,// Remains of a Paragon (Archaeology)
-			139783,// Mantid Lamp (Archaeology)
-			139784,// Pollen Collector (Archaeology)
-			139785 // Kypari sap Container (Archaeology)
+			103624, // Treasures of the Vale (Zone Loot)
+			104034, // Purse of Timeless Coins (Timeless Isle)
+			104035, // Giant Purse of Timeless Coins (Timeless Isle)
+			104271, // Coalesced Turmoil (SoO LFR Loot)
+			104272, // Celestial Treasure Box (Timeless Isle Loot)
+			104273, // Flame-Scarred Cache of Offerings (Timeless Isle Loot)
+			104275, // Twisted Treasures of the Vale (SoO LFR Loot)
+			105713, // Twisted Treasures of the Vale (SoO Flex Loot)
+			105714, // Coalesced Turmoil (SoO Flex Loot)
+            114634, // Icy Satchel of Helpful Goods Item Level 70
+            114641, // Icy Satchel of Helpful Goods Item Level 75
+            114648, // Scorched Satchel of Helpful Goods Item Level 80
+            114655, // Scorched Satchel of Helpful Goods Item Level 84
+            114662, // Tranquil Satchel of Helpful Goods Item Level 85
+            114669, // Tranquil Satchel of Helpful Goods Item Level 88
+			139776, // Banner of the Mantid Empire (Archaeology)
+			139779, // Ancient Sap Feeder (Archaeology)
+			139780, // The Praying Mantid (Archaeology)
+			139781, // Inert Sound Beacon (Archaeology)
+			139782, // Remains of a Paragon (Archaeology)
+			139783, // Mantid Lamp (Archaeology)
+			139784, // Pollen Collector (Archaeology)
+			139785  // Kypari sap Container (Archaeology)
         };
 
         private HashSet<uint> _itemUseOnThree = new HashSet<uint>() {
@@ -458,6 +469,15 @@ namespace PluginTidyBags3
         };
 		
         private HashSet<uint> _itemUseOnFive = new HashSet<uint>() {
+//			111671, // Enormous Abyssal Gulper Eel
+//			111601, // Enormous Crescent Saberfish
+//			111675, // Enormous Fat Sleeper
+//			111674, // Enormous Blind Lake Sturgeon
+//			111673, // Enormous Fire Ammonite
+//			111672, // Enormous Sea Scorpion
+//			111676, // Enormous Jawless Skulker
+//			111670, // Enormous Blackwater Whiptail
+//			118566,  // Enormous Savage Piranha
             33567 // Borean Leather Scraps
         };
 
@@ -550,12 +570,37 @@ namespace PluginTidyBags3
 			108364, // Twilight Jasmine Petal
 			108365, // Whiptail Stem
 			108391, // Titanium Ore Nugget
+			109624, // Broken Frostweed Stem
+			109625, // Broken Fireweed Stem
 			109626, // Gorgrond Flytrap Ichor
 			109627, // Starflower Petal
 			109628, // Nagrand Arrowbloom Petal
 			109629, // Talador Orchid Petal
+ 			109991, // True Iron Nugget
+			109992, // Blackrock Fragment
+//			111664, // Abyssal Gulper Eel
+//			111595, // Crescent Saberfish
+//			111668, // Fat Sleeper
+//			111667, // Blind Lake Sturgeon
+//			111666, // Fire Ammonite
+//			111665, // Sea Scorpion
+//			111669, // Jawless Skulker
+//			111663, // Blackwater Whiptail
+//			118565, // Savage Piranha
  			112693, // Frostweed Seed
 			112694  // Fireweed Seed
+        };
+		
+        private HashSet<uint> _itemUseOnTwenty = new HashSet<uint>() {
+            111659, // Small Abyssal Gulper Eel
+            111589, // Small Crescent Saberfish
+            111651, // Small Fat Sleeper
+            111652, // Small Blind Lake Sturgeon
+            111656, // Small Fire Ammonite
+            111658, // Small Sea Scorpion
+            111650, // Small Jawless Skulker
+            111662, // Small Blackwater Whiptail
+            118564  // Small Savage Piranha
         };
 
         private HashSet<uint> _itemRequiresSleep = new HashSet<uint>() {
@@ -669,6 +714,10 @@ namespace PluginTidyBags3
                             if (item.StackCount >= 10) {
                                 this.useItem(item);
                             }
+//                        } else if (_itemUseOnTwenty.Contains(item.Entry)) { // stacks of 20
+//                            if (item.StackCount >= 20) {
+//                                this.useItem(item);
+//                            }
 						} else if (_destroyItems.Contains(item.Entry)) {
 								this.destroyItem(item);
 						}
